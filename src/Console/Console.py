@@ -1,4 +1,5 @@
 import sys
+sys.path.append("Liquidador de nomina/src")
 sys.path.append("src")
 import MonthlyPayment.MonthlyPaymentLogic as mp
 

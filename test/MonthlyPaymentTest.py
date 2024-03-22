@@ -3,8 +3,10 @@
 # We import the library we will use to perform unit tests; in this case, the unittest library.
 import unittest
 import sys
+sys.path.append("Liquidador de nomina/src")
 sys.path.append("src")
-import MonthlyPayment.MonthlyPaymentLogic as mp  # We import the module MonthlyPaymentLogic.py as mp.
+import MonthlyPayment.MonthlyPaymentLogic as mp
+mp  # We import the module MonthlyPaymentLogic.py as mp.
 
 
 # We create the class that will contain the unit tests.
