@@ -1,7 +1,19 @@
 import sys
-sys.path.append("Liquidador de nomina/src")
-sys.path.append("src")
-import MonthlyPayment.MonthlyPaymentLogic as mp
+sys.path.append("src/MonthlyPayment")
+
+import os
+
+# Obtener la ruta del directorio actual
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Agregar la ruta del módulo "MonthlyPayment" al sys.path
+sys.path.append(os.path.join(current_dir, 'src'))
+
+
+from MonthlyPayment import MonthtlyPaymentLogic as mp
+
+
+
 
 print(f"""
 El propósito del programa es calcular el salario mensual de un empleado c
