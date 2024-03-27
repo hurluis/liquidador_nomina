@@ -36,6 +36,15 @@ Para llevar a cabo este cálculo, se utilizan varias constantes:
 """)
 
 def user_data_input():
+    """
+    Requests the user to input various parameters related to an employee's settlement.
+    
+    Parameters:
+        None
+
+    Returns:
+        SettlementParameters: An object encapsulating the settlement parameters inputted by the user.
+    """
     basic_salary = float(input("Ingrese el salario básico del empleado: "))
     workdays = int(input("Ingrese el número de días laborados en el mes: "))
     sick_leave = int(input("Ingrese el número de días de licencia por enfermedad: "))
@@ -56,10 +65,22 @@ def user_data_input():
                                    percentage_retirement_insurance, percentage_retirement_fund)
 
 def calculate_settlement():
+    """
+    Calculates the settlement value based on the user input data.
+
+    Returns:
+        float: The calculated settlement value.
+    """
     datos_ingresados_por_usuario = user_data_input()
     print("El valor que se le deberá pagar al trabajador es:", mp.calculate_settlement(datos_ingresados_por_usuario))
 
-def program_continue():
+def program_start():
+    """
+    Initiates the program to calculate the settlement and prompts the user if they want to calculate another worker's salary.
+
+    Returns:
+        None
+    """
     calculate_settlement()
     while True:
         valor = input("¿Quiere calcular el salario de otro trabajador? (escriba 'si' o 'no'): ").lower()
@@ -73,7 +94,7 @@ def program_continue():
 
 try :
     print("¡Hola! Comencemos a calcular el salario de los trabajadores.")
-    program_continue()
+    program_start()
 
 except Exception as the_exception:
     print(f"Ha ocurrido un error; no se puede continuar; el error que hay es el siguiente: {the_exception}")
