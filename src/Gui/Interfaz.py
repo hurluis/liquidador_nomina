@@ -168,32 +168,55 @@ class aplicacion(Screen):
         self.add_widget(contenedor)
     
     def Result_payment(self,sender):
-        basic_salary= float(self.text_inputs["salario basico"].text)
-        workdays= int(self.text_inputs["dias laborados"].text)
-        sick_leave= int(self.text_inputs["dias licencia"].text)
-        transportation_aid=float(self.text_inputs["ayuda transporte"].text)
-        dayshift_extra_hours=float(self.text_inputs["horas extra diurnas"].text)
-        nightshift_extra_hours=float(self.text_inputs["horas extra nocturnas"].text)
-        dayshift_extra_hours_holidays=float(self.text_inputs["horas extra diurnas festivos"].text)
-        nightshift_extra_hours_holidays=float(self.text_inputs["horas extra nocturnas festivos"].text)
-        leave_days=int(self.text_inputs["dias licencia enfermedad"].text)
-        percentage_health_insurance=float(self.text_inputs["porcentaje seguro salud"].text)
-        percentage_retirement_insurance=float(self.text_inputs["porcentaje seguro retiro"].text)
-        percentage_retirement_fund=float(self.text_inputs["porcentaje fondo retiro"].text)
+        try:
+            self.validar()
+            basic_salary= float(self.text_inputs["salario basico"].text)
+            workdays= int(self.text_inputs["dias laborados"].text)
+            sick_leave= int(self.text_inputs["dias licencia"].text)
+            transportation_aid=float(self.text_inputs["ayuda transporte"].text)
+            dayshift_extra_hours=float(self.text_inputs["horas extra diurnas"].text)
+            nightshift_extra_hours=float(self.text_inputs["horas extra nocturnas"].text)
+            dayshift_extra_hours_holidays=float(self.text_inputs["horas extra diurnas festivos"].text)
+            nightshift_extra_hours_holidays=float(self.text_inputs["horas extra nocturnas festivos"].text)
+            leave_days=int(self.text_inputs["dias licencia enfermedad"].text)
+            percentage_health_insurance=float(self.text_inputs["porcentaje seguro salud"].text)
+            percentage_retirement_insurance=float(self.text_inputs["porcentaje seguro retiro"].text)
+            percentage_retirement_fund=float(self.text_inputs["porcentaje fondo retiro"].text)
+            
+            verificar_result_total = mp.SettlementParameters(basic_salary, workdays, sick_leave, transportation_aid,
+                                        dayshift_extra_hours, nightshift_extra_hours,
+                                        dayshift_extra_hours_holidays, nightshift_extra_hours_holidays,
+                                        leave_days, percentage_health_insurance,
+                                        percentage_retirement_insurance, percentage_retirement_fund)
+            result_total=mp.calculate_settlement(verificar_result_total)
+            self.resultado.text= str(result_total)
         
-        verificar_result_total = mp.SettlementParameters(basic_salary, workdays, sick_leave, transportation_aid,
-                                       dayshift_extra_hours, nightshift_extra_hours,
-                                       dayshift_extra_hours_holidays, nightshift_extra_hours_holidays,
-                                       leave_days, percentage_health_insurance,
-                                       percentage_retirement_insurance, percentage_retirement_fund)
-        result_total=mp.calculate_settlement(verificar_result_total)
-        self.resultado.text= str(result_total)
+        except ValueError as err:
+            self.resultado.text= "Los valores ingresado no son válidos"
+        
+        except Exception as err:
+            self.mostrar_error( err )
     
+    def mostrar_error( self, err ):
+        contenido = GridLayout(cols=1)
+        contenido.add_widget( Label(text= str(err) ) )
+        cerrar = Button(text="Cerrar" )
+        contenido.add_widget( cerrar )
+        popup = Popup(title="Error",content=contenido)
+        cerrar.bind( on_press=popup.dismiss)
+        popup.open()
+
+    def validar(self):
+        for key, value in self.text_inputs.items():
+            if not value.text or not value.text.isnumeric():
+                raise Exception(f"El Valor de {key} debe ser un número válido")
+       
     def go_to_Mein_menu(self, instance):
         self.manager.current = 'Menu Principal'
     
     def go_to_description(self,instance):
         self.manager.current="Description"
+
 
 class nomina_calculator(App):
     def build(self):
