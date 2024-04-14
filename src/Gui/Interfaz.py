@@ -208,7 +208,11 @@ class aplicacion(Screen):
 
     def validar(self):
         for key, value in self.text_inputs.items():
-            if not value.text or not value.text.isnumeric():
+            if not value.text:
+                raise Exception(f"El Valor de {key} no puede estar vacío")
+            try:
+                float_value = float(value.text)
+            except ValueError:
                 raise Exception(f"El Valor de {key} debe ser un número válido")
        
     def go_to_Mein_menu(self, instance):
