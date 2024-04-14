@@ -59,3 +59,15 @@ Además, el código hace uso de la biblioteca `unittest`, que es un marco de pru
 * Carpeta MonthlyPayment: Carpeta en la cual se guarda la lógica del proyecto.
 * Carpeta test: Carpeta en la cual se guardan las pruebas unitarias.
 * Carpeta console: Carpeta en la cual estará la interfaz con la cual el usuario podrá manejar el código sin ver el código fuente.
+
+# Como ejecutar el programa
+
+1) Dirigaje a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
+
+2) Luego en esta carpeta abre una terminal de Git y pega el siguiente codigo <git init> 
+
+3) Ahora copia  <git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git>
+
+4) Ahora en la terminal copia <cd Calculadora_de_nomina>
+
+5) ahora copia el siguiente codigo en la terminal <python ./Liquidador_para_nomina/src/Gui/Interfaz.py> 
