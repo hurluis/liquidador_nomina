@@ -144,7 +144,7 @@ def calculate_transportation_aid(transportation_aid, basic_salary):
     Returns:
     - The calculated transportation aid.
     """
-    if basic_salary >= 2600000:
+    if basic_salary >= 2*MINIMUM_WAGE:
         return 0
     return transportation_aid
 

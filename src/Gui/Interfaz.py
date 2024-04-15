@@ -105,6 +105,8 @@ Para llevar a cabo este cálculo, se utilizan varias constantes:
     * Porcentaje de seguro de salud y aportes a pensiones: {mp.PERCENTAGE_HEALTH_INSURANCE * 100}%
     * Porcentaje de fondo de retiro: {mp.PERCENTAGE_RETIREMENT_FUND * 100}%
 6) Una lista que define los porcentajes de retención salarial en función del salario en UVT.
+7) Los porcentajes deben ser ingresados de forma decimal
+
 """
         description_label =Label(text=text_description,font_size=20 ,size_hint_y=None,halign="justify", valign="top", font_name='Arial')
         Text_proposito=Label(text="Proposito",font_size=30,bold=True, italic=True, font_name='Arial')
