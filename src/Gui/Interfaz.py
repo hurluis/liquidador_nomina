@@ -182,7 +182,9 @@ class aplicacion(Screen):
             nightshift_extra_hours_holidays=float(self.text_inputs["horas extra nocturnas festivos"].text)
             leave_days=int(self.text_inputs["dias licencia enfermedad"].text)
             percentage_health_insurance=float(self.text_inputs["porcentaje seguro salud"].text)
+            
             percentage_retirement_insurance=float(self.text_inputs["porcentaje seguro retiro"].text)
+            
             percentage_retirement_fund=float(self.text_inputs["porcentaje fondo retiro"].text)
             
             verificar_result_total = mp.SettlementParameters(basic_salary, workdays, sick_leave, transportation_aid,

@@ -18,6 +18,10 @@ Este código proporciona una herramienta completa y robusta para gestionar efici
 
 * **Instalación de Python**: Python es el lenguaje de programación utilizado en este programa, por lo que la persona que desee ejecutarlo deberá tener Python instalado en su sistema. Puede descargar Python desde el sitio web oficial de Python ([Instalador de Python](https://www.python.org/)) e instalarlo siguiendo las instrucciones proporcionadas.
 
+* **Instalación de la libreria kivy**: Es un framework de código abierto en Python para desarrollar aplicaciones multitáctiles. Se utiliza principalmente para crear aplicaciones con interfaces de usuario (UI) atractivas y dinámicas que pueden funcionar en varias plataformas, incluyendo Windows, macOS, Linux, iOS y Android.
+
+* **Instalacion de la extención kivymd**: Esta es una extensión de Kivy que proporciona una implementación de los principios de Material Design de Google para el framework Kivy. Material Design es un sistema de diseño desarrollado por Google que se centra en la usabilidad y la estética, proporcionando una guía visual coherente para el diseño de interfaces de usuario.
+
 * **Datos de entrada relevantes**: Al ejecutar el programa se necesitará tener acceso a los datos necesarios para proporcionar los parámetros requeridos por el programa, como el salario básico, los días laborables, los días de licencia médica, entre otros.
 
 # ¿Cómo está hecho?
@@ -64,10 +68,10 @@ Además, el código hace uso de la biblioteca `unittest`, que es un marco de pru
 
 1) Dirigaje a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Luego en esta carpeta abre una terminal de Git y pega el siguiente codigo <git init> 
+2) Luego en esta carpeta abre una terminal de Git y pega el siguiente codigo `git init`
 
-3) Ahora copia  <git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git>
+3) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
 
-4) Ahora en la terminal copia <cd Calculadora_de_nomina>
+4) Ahora en la terminal copia  `cd Calculadora_de_nomina`
 
-5) ahora copia el siguiente codigo en la terminal <python ./Liquidador_para_nomina/src/Gui/Interfaz.py> 
+5) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/Gui/Interfaz.py`
