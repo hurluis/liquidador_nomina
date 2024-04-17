@@ -15,6 +15,8 @@ PERCENTAGE_HEALTH_INSURANCE = 0.04  # Percentage of salary destined for health i
 PERCENTAGE_RETIREMENT_INSURANCE = 0.04  # Percentage of salary destined for retirement insurance
 PERCENTAGE_RETIREMENT_FUND= 0.01  # Percentage of salary destined for retirement fund
 PERCENTAGE_SICK_LEAVE = 0.6666  # Percentage of salary paid during a sick leave
+RETIREMENT_FUND_SALARY = 5000000 # Minimum salary thay pays retirement fund
+MAXIMUM_DAYS_SICKLEAVE = 3 # Maximund days of sick leave that the business can pay
 # List of salary holdback percentages for different salary ranges
 SALARY_HOLDBACK_PERCENTAGES = [
     (0, 95, 0.0, 0.0),
@@ -99,15 +101,15 @@ class SettlementParameters:
         if percentage_health_insurance == 0:
             raise InvalidHealthInsurancePercentageError("El porcentaje de seguro de salud no puede ser cero.")
 
-        if basic_salary >= 5000000 and percentage_retirement_fund == 0:
+        if basic_salary >= RETIREMENT_FUND_SALARY and percentage_retirement_fund == 0:
             raise InvalidRetirementFundPercentageError(
                 "El porcentaje de fondo de retiro debe ser mayor que cero para salarios superiores a 5.000.000.")
 
-        if basic_salary <= 5000000 and percentage_retirement_fund != 0:
+        if basic_salary < RETIREMENT_FUND_SALARY and percentage_retirement_fund != 0:
             raise InvalidRetirementFundPercentageErrorSalaryMenor(
                 "El porcentaje de fondo de retiro debe ser cero para salarios inferiores a 5.000.000.")
 
-        if basic_salary >= 2600000 and transportation_aid != 0:
+        if basic_salary >= 2*MINIMUM_WAGE and transportation_aid != 0:
             raise InvalidTransportationAidError(
                 "El auxilio de transporte debe ser cero para salarios superiores a 2.600.000.")
 
@@ -203,7 +205,7 @@ def calculate_retirement_fund(basic_salary, percentage_retirement_fund):
     Returns:
     - The calculated retirement fund contribution.
     """
-    if basic_salary >= 5000000:
+    if basic_salary >= RETIREMENT_FUND_SALARY:
         return basic_salary * percentage_retirement_fund
     return 0
 
@@ -219,7 +221,7 @@ def calculate_sick_leave(basic_salary, days_sick_leave):
     Returns:
     - The calculated sick leave pay.
     """
-    if days_sick_leave < 3 and basic_salary >= MINIMUM_WAGE:
+    if days_sick_leave < MAXIMUM_DAYS_SICKLEAVE and basic_salary >= MINIMUM_WAGE:
         return (basic_salary / MONTH_DAYS) * PERCENTAGE_SICK_LEAVE * days_sick_leave
     return 0
 
