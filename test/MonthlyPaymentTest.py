@@ -3,7 +3,8 @@
 # We import the library we will use to perform unit tests; in this case, the unittest library.
 import unittest
 import sys
-sys.path.append("Liquidador_para_nomina/src") # ruta C:\Users\David\Desktop\Climpio\Liquidador_para_nomina\src
+sys.path.append("Liquidador_para_nomina/src")
+sys.path.append("./src")
 from MonthlyPayment.MonthlyPaymentLogic import *
 import MonthlyPayment.MonthlyPaymentLogic as mp
 

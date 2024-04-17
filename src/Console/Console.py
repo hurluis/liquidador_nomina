@@ -1,7 +1,8 @@
 import sys
-sys.path.append("Liquidador_para_nomina/src") 
-from MonthlyPayment.MonthlyPaymentLogic import *
-import MonthlyPayment.MonthlyPaymentLogic as mp
+sys.path.append("Liquidador_para_nomina/src")
+sys.path.append("./src")
+from src.MonthlyPayment.MonthlyPaymentLogic import *
+import src.MonthlyPayment.MonthlyPaymentLogic as mp
 
 print(f"""
 El propósito del programa es calcular el salario mensual de un empleado c

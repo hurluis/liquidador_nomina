@@ -1,5 +1,6 @@
 import sys
-sys.path.append("Liquidador_para_nomina/src") 
+sys.path.append("Liquidador_para_nomina/src")
+sys.path.append("./src")
 from MonthlyPayment.MonthlyPaymentLogic import *
 import MonthlyPayment.MonthlyPaymentLogic as mp
 
