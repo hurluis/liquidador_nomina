@@ -143,13 +143,13 @@ class aplicacion(Screen):
         contenedor = GridLayout(cols=4, padding=20, spacing=20)
         lista_contenedor = ["salario basico",
                             "dias mensuales laborados",
-                            "dias  de licencia",
+                            "dias de licencia",
                             "ayuda transporte",
                             "horas extra diurnas",
                             "horas extra nocturnas",
                             "horas extra diurnas festivos",
                             "horas extra nocturnas festivos",
-                            "dias de incapacidad",
+                            "Dias de incapacidad",
                             "porcentaje aporte a salud",
                             "porcentaje aporte a pensión",
                             "porcentaje aporte a fondo de solidaridad pensional"]
