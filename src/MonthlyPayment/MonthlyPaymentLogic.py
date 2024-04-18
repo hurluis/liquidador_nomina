@@ -62,7 +62,11 @@ class SintaxiError(Exception):
 class NegativedayWork(Exception):
     pass
 
+class workdayslimit(Exception):
+    pass
 
+class negativeparameter(Exception):
+    pass
 
 # Class for settlement parameters
 # Constructor of the class that initializes the parameters necessary for salary settlement.
@@ -70,6 +74,7 @@ class SettlementParameters:
     def __init__(self, basic_salary, workdays, sick_leave, transportation_aid, dayshift_extra_hours,
                  nightshift_extra_hours, dayshift_extra_hours_holidays, nightshift_extra_hours_holidays,
                  leave_days, percentage_health_insurance, percentage_retirement_insurance, percentage_retirement_fund):
+        
         self.basic_salary = basic_salary
         self.workdays = workdays
         self.sick_leave = sick_leave
@@ -84,6 +89,7 @@ class SettlementParameters:
         self.percentage_retirement_fund = percentage_retirement_fund
     
     # Static method to validate settlement parameters.
+    
     @staticmethod
     def validate_parameters(basic_salary, workdays, transportation_aid, percentage_health_insurance,
                             percentage_retirement_insurance, percentage_retirement_fund):
@@ -109,16 +115,18 @@ class SettlementParameters:
             raise InvalidRetirementFundPercentageErrorSalaryMenor(
                 "El porcentaje de fondo de retiro debe ser cero para salarios inferiores a 5.000.000.")
 
-        if basic_salary >= 2*MINIMUM_WAGE and transportation_aid != 0:
+        if basic_salary > 2*MINIMUM_WAGE and transportation_aid != 0:
             raise InvalidTransportationAidError(
                 "El auxilio de transporte debe ser cero para salarios superiores a 2.600.000.")
 
         if workdays < 0:
             raise NegativedayWork("El número de días de trabajo no puede ser negativo.")
-
+        elif workdays > 30:
+            raise workdayslimit("Los dias de trabajo no puede ser superiores a 30 dias")
+        
 
 # Helper functions
-def calculate_salary(basic_salary, workdays, leave_days, sick_leave):
+def calculate_salary(basic_salary, workdays, leave_days, sick_leave): 
     """
     Calculate the salary based on workdays, leave days, and sick leave.
 
@@ -135,7 +143,7 @@ def calculate_salary(basic_salary, workdays, leave_days, sick_leave):
     return (basic_salary / MONTH_DAYS) * (workdays + leave_days + sick_leave)
 
 
-def calculate_transportation_aid(transportation_aid, basic_salary):
+def calculate_transportation_aid(transportation_aid, basic_salary): 
     """
     Calculate the transportation aid.
 
@@ -151,7 +159,7 @@ def calculate_transportation_aid(transportation_aid, basic_salary):
     return transportation_aid
 
 
-def calculate_extra_hours(basic_salary, extra_hours, extra_hour_type):
+def calculate_extra_hours(basic_salary, extra_hours, extra_hour_type): 
     """
     Calculate the extra hours pay based on the multiplier.
 
@@ -180,7 +188,7 @@ def calculate_health_insurance(basic_salary, percentage_health_insurance):
     return basic_salary * percentage_health_insurance
 
 
-def calculate_retirement_insurance(basic_salary, percentage_retirement_insurance):
+def calculate_retirement_insurance(basic_salary, percentage_retirement_insurance): 
     """
     Calculate the retirement insurance contribution.
 
@@ -194,7 +202,7 @@ def calculate_retirement_insurance(basic_salary, percentage_retirement_insurance
     return basic_salary * percentage_retirement_insurance
 
 
-def calculate_retirement_fund(basic_salary, percentage_retirement_fund):
+def calculate_retirement_fund(basic_salary, percentage_retirement_fund): 
     """
     Calculate the retirement fund contribution.
 
@@ -226,7 +234,7 @@ def calculate_sick_leave(basic_salary, days_sick_leave):
     return 0
 
 
-def calculate_leave(basic_salary, leave_days):
+def calculate_leave(basic_salary, leave_days): 
     """
     Calculate the leave pay.
 
@@ -256,7 +264,7 @@ def calculate_salary_holdback(basic_salary):
             return (basic_salary/UVT) * percentage + (number_of_uvt * UVT)
 
 
-def calculate_accrued_values(parameters):
+def calculate_accrued_values(parameters): 
     """
     Calculate the total accrued values.
 
@@ -286,7 +294,7 @@ def calculate_accrued_values(parameters):
     return accrued_values
 
 
-def calculate_deducted_values(parameters):
+def calculate_deducted_values(parameters): 
     """
     Calculate the total deducted values.
 
@@ -308,7 +316,7 @@ def calculate_deducted_values(parameters):
     return deducted_values
 
 
-def calculate_settlement(parameters):
+def calculate_settlement(parameters): 
     """
     Calculate the total settlement by subtracting deducted values from accrued values.
 

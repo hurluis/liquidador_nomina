@@ -1,3 +1,7 @@
+# imprimir toda las cosas que el profe pide
+#agregar exepcion menores a 0 y mayor a 30
+#poner bien lo del numero 4
+
 import sys
 
 sys.path.append("Liquidador_para_nomina/src")
@@ -57,7 +61,7 @@ class Mein_menu(Screen):
         text_header = Label(text="Bienvenido a la aplicacion Calculadora de nomina", font_size=27, color=(1, 0, 0, 1),
                             bold=True, italic=True, font_name='Arial')
         header.add_widget(text_header)
-        img = Image(source=r'Liquidador_para_nomina\src\Gui\bienvenidos44.png')
+        img = Image(source=r'.\src\Gui\bienvenidos44.png')
         header.add_widget(img)
         main_layout.add_widget(header)
 
@@ -74,10 +78,10 @@ class Mein_menu(Screen):
         self.add_widget(main_layout)
 
     def go_to_tutorial(self, instance):
-        self.manager.current = 'Description'
+        self.manager.current = "Descripción"
 
     def go_to_aplicacion(self, instance):
-        self.manager.current = "Aplicacion"
+        self.manager.current = "Aplicación"
 
 
 class Description(Screen):
@@ -110,7 +114,6 @@ Para llevar a cabo este cálculo, se utilizan varias constantes:
     * Porcentaje de seguro de salud y aportes a pensiones: {mp.PERCENTAGE_HEALTH_INSURANCE * 100}%
     * Porcentaje de fondo de retiro: {mp.PERCENTAGE_RETIREMENT_FUND * 100}%
 6) Una lista que define los porcentajes de retención salarial en función del salario en UVT.
-7) Los porcentajes deben ser ingresados de forma decimal
 
 """
         description_label = Label(text=text_description, font_size=20, size_hint_y=None, halign="justify", valign="top",
@@ -124,8 +127,8 @@ Para llevar a cabo este cálculo, se utilizan varias constantes:
 
         Contenedor_botones = BoxLayout(orientation="vertical", size_hint=(0.5, 0.8))
         Contenedor_botones.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
-        button_next = Button(text="ir a la aplicacion", on_press=self.go_to_aplicacion)
-        button_back = Button(text="Regresar al texto principal", on_press=self.go_to_Mein_menu)
+        button_next = Button(text="ir a la Aplicación", on_press=self.go_to_aplicacion)
+        button_back = Button(text="Regresar al menú principal", on_press=self.go_to_Mein_menu)
         Contenedor_botones.add_widget(button_next)
         Contenedor_botones.add_widget(button_back)
         header_Description.add_widget(Contenedor_botones)
@@ -135,7 +138,7 @@ Para llevar a cabo este cálculo, se utilizan varias constantes:
         self.manager.current = 'Menu Principal'
 
     def go_to_aplicacion(self, instance):
-        self.manager.current = "Aplicacion"
+        self.manager.current = "Aplicación"
 
 
 class aplicacion(Screen):
@@ -163,53 +166,63 @@ class aplicacion(Screen):
         self.button_menu = Button(text="Menu principal", on_press=self.go_to_Mein_menu)
         contenedor.add_widget(self.button_menu)
 
-        self.button_calculator = Button(text="Calcular")
+        self.button_calculator = Button(text="Calcular",on_press=self.Result_payment)
         contenedor.add_widget(self.button_calculator)
-
-        self.button_calculator.bind(on_press=self.Result_payment)
-
-        self.resultado = Label(text=".................")
-        contenedor.add_widget(self.resultado)
-
-        self.button_description = Button(text="Ventana descripcón", on_press=self.go_to_description)
+    
+        self.button_description = Button(text="Descripción", on_press=self.go_to_description)
         contenedor.add_widget(self.button_description)
-        self.add_widget(contenedor)
 
+        imgudm = Image(source=r'.\src\Gui\3192b796-96f1-4894-a3f0-98e88584ce1e.png')
+        contenedor.add_widget(imgudm)
+        self.add_widget(contenedor)
+    
+    
     def Result_payment(self, sender):
         try:
             self.validar()
-            basic_salary = float(self.text_inputs["salario basico"].text)
-            workdays = int(self.text_inputs["dias laborados mensuales"].text)
-            sick_leave = int(self.text_inputs["dias licencia"].text)
-            transportation_aid = float(self.text_inputs["ayuda transporte"].text)
-            dayshift_extra_hours = float(self.text_inputs["horas extra diurnas"].text)
-            nightshift_extra_hours = float(self.text_inputs["horas extra nocturnas"].text)
-            dayshift_extra_hours_holidays = float(self.text_inputs["horas extra diurnas festivos"].text)
-            nightshift_extra_hours_holidays = float(self.text_inputs["horas extra nocturnas festivos"].text)
-            leave_days = int(self.text_inputs["dias licencia enfermedad"].text)
-            percentage_health_insurance = float(self.text_inputs["porcentaje aporte a  salud"].text)
-
-            percentage_retirement_insurance = float(self.text_inputs["porcentaje aporte a pensión"].text)
-
-            percentage_retirement_fund = float(
-                self.text_inputs["porcentaje aporte a fondo de solidaridad pensional"].text)
-
-            verificar_result_total = mp.SettlementParameters(basic_salary, workdays, sick_leave, transportation_aid,
-                                                             dayshift_extra_hours, nightshift_extra_hours,
-                                                             dayshift_extra_hours_holidays,
-                                                             nightshift_extra_hours_holidays,
-                                                             leave_days, percentage_health_insurance,
-                                                             percentage_retirement_insurance,
-                                                             percentage_retirement_fund)
-            result_total = mp.calculate_settlement(verificar_result_total)
-            self.resultado.text = str(result_total)
-
+            self.basic_salary = float(self.text_inputs["salario basico"].text)
+            self.workdays = int(self.text_inputs["dias mensuales laborados"].text)
+            self.sick_leave = int(self.text_inputs["dias licencia"].text)
+            self.transportation_aid = float(self.text_inputs["ayuda transporte"].text)
+            self.dayshift_extra_hours = float(self.text_inputs["horas extra diurnas"].text)
+            self.nightshift_extra_hours = float(self.text_inputs["horas extra nocturnas"].text)
+            self.dayshift_extra_hours_holidays = float(self.text_inputs["horas extra diurnas festivos"].text)
+            self.nightshift_extra_hours_holidays = float(self.text_inputs["horas extra nocturnas festivos"].text)
+            self.leave_days = int(self.text_inputs["dias licencia enfermedad"].text)
+            self.percentage_health_insurance = float(self.text_inputs["porcentaje aporte a salud"].text)/100 #porcentage
+            self.percentage_retirement_insurance = float(self.text_inputs["porcentaje aporte a pensión"].text)/100 #porcentaje
+            self.percentage_retirement_fund = float(self.text_inputs["porcentaje aporte a fondo de solidaridad pensional"].text)/100 #porcentaje
+            
+            self.verificar_result_total = mp.SettlementParameters(self.basic_salary,self. workdays, self.sick_leave, self.transportation_aid,
+                                                             self.dayshift_extra_hours, self.nightshift_extra_hours,
+                                                             self.dayshift_extra_hours_holidays,
+                                                             self.nightshift_extra_hours_holidays,
+                                                             self.leave_days,self.percentage_health_insurance,
+                                                             self.percentage_retirement_insurance,
+                                                             self.percentage_retirement_fund)   
+            
+            self.result_total_to_pay = round(mp.calculate_settlement(self.verificar_result_total),2)
+            self.mostrar_repuestas()
+        
         except ValueError as err:
-            self.resultado.text = "Los valores ingresado no son válidos"
-
+            self.mostrar_error(err)
         except Exception as err:
             self.mostrar_error(err)
-
+    
+    def validar(self):
+        for key, value in self.text_inputs.items():
+            if not value.text:
+                raise Exception(f"El Valor de {key} no puede estar vacío")
+            try:
+                float_value = float(value.text)
+            except ValueError:
+                raise Exception(f"El Valor de {key} debe ser un número válido")
+        
+        for key, value in self.text_inputs.items():
+            if 0 > float(value.text):
+                raise Exception(f"El Valor de {key} no puede ser negativo")
+   
+   
     def mostrar_error(self, err):
         contenido = GridLayout(cols=1)
         contenido.add_widget(Label(text=str(err)))
@@ -219,21 +232,52 @@ class aplicacion(Screen):
         cerrar.bind(on_press=popup.dismiss)
         popup.open()
 
-    def validar(self):
-        for key, value in self.text_inputs.items():
-            if not value.text:
-                raise Exception(f"El Valor de {key} no puede estar vacío")
-            try:
-                float_value = float(value.text)
-            except ValueError:
-                raise Exception(f"El Valor de {key} debe ser un número válido")
+    
+    
+    
+    def mostrar_repuestas(self):
+        contenedor_respuestas= GridLayout(cols=4, padding=20, spacing=20)
+        
+        lista_respuestas=["Salario","Subsidion de transporte","Valor horas extras diurnas",
+                          "valor horas extra nocturnas","Valor horas extras festivas",
+                          "valor aporte salud","valor aporte pension","valor aporte solidadrio",
+                          "valor incapasidades","valor licencias","retencion en la fuente","total a pagar"]
+        
+        self.labels_respuestas={}
+        
+        for index in lista_respuestas:
+            contenedor_respuestas.add_widget(Label(text=index))
+            self.labels_respuestas[index]=TextInput(font_size=30)
+            contenedor_respuestas.add_widget(self.labels_respuestas[index])
+        
+        self.labels_respuestas["Salario"].text=str(round(calculate_salary(self.basic_salary, self.workdays, self.leave_days, self.sick_leave),2))
+        self.labels_respuestas["Subsidion de transporte"].text=str(calculate_transportation_aid(self.transportation_aid, self.basic_salary))
+        self.labels_respuestas["Valor horas extras diurnas"].text=str(round(calculate_extra_hours(self.basic_salary, self.dayshift_extra_hours,mp.EXTRA_HOUR_DAYSHIFT),2))
+        self.labels_respuestas["valor horas extra nocturnas"].text=str(round(calculate_extra_hours(self.basic_salary, self.nightshift_extra_hours,mp.EXTRA_HOUR_NIGHTSHIFT),2))
+        values_hours_HOLIDAYS= calculate_extra_hours(self.basic_salary,self.dayshift_extra_hours_holidays,mp.EXTRA_HOUR_DAYSHIFT_HOLIDAYS)+calculate_extra_hours(self.basic_salary,self.nightshift_extra_hours_holidays,
+                                            mp.EXTRA_HOUR_NIGHTSHIFT_HOLIDAYS)
+        self.labels_respuestas["Valor horas extras festivas"].text=str(round(values_hours_HOLIDAYS,2))
+        self.labels_respuestas["valor aporte salud"].text=str(round(calculate_health_insurance(self.basic_salary, self.percentage_health_insurance),2))
+        self.labels_respuestas["valor aporte pension"].text=str(round(calculate_retirement_insurance(self.basic_salary, self.percentage_retirement_insurance),2))
+        self.labels_respuestas["valor aporte solidadrio"].text=str(round(calculate_retirement_fund(self.basic_salary,self.percentage_retirement_fund),2))
+        self.labels_respuestas["valor incapasidades"].text=str(round(calculate_sick_leave(self.basic_salary,self.sick_leave),2))
+        self.labels_respuestas["valor licencias"].text=str(round(calculate_leave(self.basic_salary,self.leave_days),2))
+        self.labels_respuestas["retencion en la fuente"].text= str(round(calculate_salary_holdback(self.basic_salary),2))
+        self.labels_respuestas["total a pagar"].text=str(self.result_total_to_pay)
+        
+        cerrar = Button(text="Cerrar")
+        contenedor_respuestas.add_widget(cerrar)
+        popup = Popup(title="Respuestas", content=contenedor_respuestas)
+        cerrar.bind(on_press=popup.dismiss)
+        popup.open()
 
+    
     def go_to_Mein_menu(self, instance):
         self.manager.current = 'Menu Principal'
 
     def go_to_description(self, instance):
         self.manager.current = "Descripción"
-
+     
 
 class nomina_calculator(App):
     def build(self):

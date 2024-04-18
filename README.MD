@@ -20,20 +20,24 @@ Este código proporciona una herramienta completa y robusta para gestionar efici
 
 * **Instalación de la libreria kivy**: Es un framework de código abierto en Python para desarrollar aplicaciones multitáctiles. Se utiliza principalmente para crear aplicaciones con interfaces de usuario (UI) atractivas y dinámicas que pueden funcionar en varias plataformas, incluyendo Windows, macOS, Linux, iOS y Android.
 
+La instalación se puede llevar a cabo mediante el siguiente código en la terminal: <pip install kivy>
+
 * **Instalacion de la extensión kivymd**: Esta es una extensión de Kivy que proporciona una implementación de los principios de Material Design de Google para el framework Kivy. Material Design es un sistema de diseño desarrollado por Google que se centra en la usabilidad y la estética, proporcionando una guía visual coherente para el diseño de interfaces de usuario.
+
+La instalación se puede llevar a cabo mediante el siguiente código en la terminal: <pip install kivymd>
 
 * **Datos de entrada relevantes**: Al ejecutar el programa se necesitará tener acceso a los datos necesarios para proporcionar los parámetros requeridos por el programa, como el salario básico, los días laborables, los días de licencia médica, entre otros.
 
 # ¿Cómo está hecho?
 
-El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 5 archivos, los cuales son:
+El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 6 archivos, los cuales son:
 
 1. MonthlyPaymentLogic.py
 2. MonthlyPaymentTest.py
 3. ExtraordinaryCasesTest.py
 4. ErrorCaseTest.py
 5. Console.py
-
+6. interfaz.py
 * **MonthlyPaymentLogic.py**:
 
 Es el archivo principal, aquí se guarda la lógica que el programa debe realizar. Al inicio contiene algunas constantes (`EXTRA_HOUR_DAYSHIFT`, `EXTRA_HOUR_NIGHTSHIFT`, `EXTRA_HOUR_DAYSHIFT_HOLIDAYS`, `EXTRA_HOUR_NIGHTSHIFT_HOLIDAYS`) que se requieren para el cálculo de la nómina. Luego están las clases de error, las cuales se aseguran de avisarle al usuario cuáles errores ha cometido. Después de esto sigue la clase `SettlementParameters` la cual se encarga de almacenar las variables ingresadas por el usuario y revisar que estas estén bien. Por último, están todas las funciones complementarias que nos ayudan a calcular los valores devengados y deducidos y calcular la nómina del trabajador.
@@ -62,42 +66,37 @@ Además, el código hace uso de la biblioteca `unittest`, que es un marco de pru
 
 * Carpeta MonthlyPayment: Carpeta en la cual se guarda la lógica del proyecto.
 * Carpeta test: Carpeta en la cual se guardan las pruebas unitarias.
-* Carpeta console: Carpeta en la cual estará la interfaz con la cual el usuario podrá manejar el código sin ver el código fuente.
+* Carpeta console: Carpeta en la cual estará la interfaz de consola con la cual el usuario podrá manejar el código sin ver el código fuente.
+* Carpeta GUI: Carpeta en la cual estará la interfaz gráfica, la cual proporcionará una mayor comodidad para el usuario.
 
 # Como ejecutar la interfaz gráfica
 
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Luego en esta carpeta abra una terminal de Git y pega el siguiente codigo `git init`
+2) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
 
-3) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
+3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
 
-4) Ahora en la terminal copia  `cd Calculadora_de_nomina`
-
-5) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/Gui/Interfaz.py`
+4) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/Gui/Interfaz.py`
 
 # Como ejecutar las pruebas unitarias
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Luego en esta carpeta abra una terminal de Git y pega el siguiente codigo `git init`
+2) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
 
-3) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
-
-4) Ahora en la terminal copia  `cd Calculadora_de_nomina`
+3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
 
 Dependiendo del caso de prueba se copia lo siguiente:
-5) Casos normales: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/MonthlyPaymentTest.py`
-6) Casos extraordinarios: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ExtraordinaryCasesTest.py`
-7) Casos de error: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ErrorCaseTest.py`
+4) Casos normales: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/MonthlyPaymentTest.py`
+5) Casos extraordinarios: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ExtraordinaryCasesTest.py`
+6) Casos de error: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ErrorCaseTest.py`
 
 # Como ejecutar la interfaz por consola
 
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Luego en esta carpeta abra una terminal de Git y pega el siguiente codigo `git init`
+2) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
 
-3) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
+3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
 
-4) Ahora en la terminal copia  `cd Calculadora_de_nomina`
-
-5) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/Console/Console.py`
+4) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/Console/Console.py`
