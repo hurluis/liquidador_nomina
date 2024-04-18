@@ -88,7 +88,9 @@ Además, el código hace uso de la biblioteca `unittest`, que es un marco de pru
 
 Dependiendo del caso de prueba se copia lo siguiente:
 4) Casos normales: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/MonthlyPaymentTest.py`
+
 5) Casos extraordinarios: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ExtraordinaryCasesTest.py`
+
 6) Casos de error: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ErrorCaseTest.py`
 
 # Como ejecutar la interfaz por consola

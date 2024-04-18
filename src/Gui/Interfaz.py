@@ -1,7 +1,3 @@
-# imprimir toda las cosas que el profe pide
-#agregar exepcion menores a 0 y mayor a 30
-#poner bien lo del numero 4
-
 import sys
 
 sys.path.append("Liquidador_para_nomina/src")
@@ -147,13 +143,13 @@ class aplicacion(Screen):
         contenedor = GridLayout(cols=4, padding=20, spacing=20)
         lista_contenedor = ["salario basico",
                             "dias mensuales laborados",
-                            "dias licencia",
+                            "dias  de licencia",
                             "ayuda transporte",
                             "horas extra diurnas",
                             "horas extra nocturnas",
                             "horas extra diurnas festivos",
                             "horas extra nocturnas festivos",
-                            "dias licencia enfermedad",
+                            "dias de incapacidad",
                             "porcentaje aporte a salud",
                             "porcentaje aporte a pensión",
                             "porcentaje aporte a fondo de solidaridad pensional"]
@@ -182,13 +178,13 @@ class aplicacion(Screen):
             self.validar()
             self.basic_salary = float(self.text_inputs["salario basico"].text)
             self.workdays = int(self.text_inputs["dias mensuales laborados"].text)
-            self.sick_leave = int(self.text_inputs["dias licencia"].text)
+            self.sick_leave = int(self.text_inputs["dias de licencia"].text)
             self.transportation_aid = float(self.text_inputs["ayuda transporte"].text)
             self.dayshift_extra_hours = float(self.text_inputs["horas extra diurnas"].text)
             self.nightshift_extra_hours = float(self.text_inputs["horas extra nocturnas"].text)
             self.dayshift_extra_hours_holidays = float(self.text_inputs["horas extra diurnas festivos"].text)
             self.nightshift_extra_hours_holidays = float(self.text_inputs["horas extra nocturnas festivos"].text)
-            self.leave_days = int(self.text_inputs["dias licencia enfermedad"].text)
+            self.leave_days = int(self.text_inputs["Dias de incapacidad"].text)
             self.percentage_health_insurance = float(self.text_inputs["porcentaje aporte a salud"].text)/100 #porcentage
             self.percentage_retirement_insurance = float(self.text_inputs["porcentaje aporte a pensión"].text)/100 #porcentaje
             self.percentage_retirement_fund = float(self.text_inputs["porcentaje aporte a fondo de solidaridad pensional"].text)/100 #porcentaje
@@ -238,10 +234,10 @@ class aplicacion(Screen):
     def mostrar_repuestas(self):
         contenedor_respuestas= GridLayout(cols=4, padding=20, spacing=20)
         
-        lista_respuestas=["Salario","Subsidion de transporte","Valor horas extras diurnas",
+        lista_respuestas=["Salario","Subsidio de transporte","Valor horas extras diurnas",
                           "valor horas extra nocturnas","Valor horas extras festivas",
                           "valor aporte salud","valor aporte pension","valor aporte solidadrio",
-                          "valor incapasidades","valor licencias","retencion en la fuente","total a pagar"]
+                          "valor incapacidades","valor licencias","retención en la fuente","total a pagar"]
         
         self.labels_respuestas={}
         
@@ -251,18 +247,18 @@ class aplicacion(Screen):
             contenedor_respuestas.add_widget(self.labels_respuestas[index])
         
         self.labels_respuestas["Salario"].text=str(round(calculate_salary(self.basic_salary, self.workdays, self.leave_days, self.sick_leave),2))
-        self.labels_respuestas["Subsidion de transporte"].text=str(calculate_transportation_aid(self.transportation_aid, self.basic_salary))
+        self.labels_respuestas["Subsidio de transporte"].text=str(calculate_transportation_aid(self.transportation_aid, self.basic_salary))
         self.labels_respuestas["Valor horas extras diurnas"].text=str(round(calculate_extra_hours(self.basic_salary, self.dayshift_extra_hours,mp.EXTRA_HOUR_DAYSHIFT),2))
         self.labels_respuestas["valor horas extra nocturnas"].text=str(round(calculate_extra_hours(self.basic_salary, self.nightshift_extra_hours,mp.EXTRA_HOUR_NIGHTSHIFT),2))
         values_hours_HOLIDAYS= calculate_extra_hours(self.basic_salary,self.dayshift_extra_hours_holidays,mp.EXTRA_HOUR_DAYSHIFT_HOLIDAYS)+calculate_extra_hours(self.basic_salary,self.nightshift_extra_hours_holidays,
                                             mp.EXTRA_HOUR_NIGHTSHIFT_HOLIDAYS)
         self.labels_respuestas["Valor horas extras festivas"].text=str(round(values_hours_HOLIDAYS,2))
         self.labels_respuestas["valor aporte salud"].text=str(round(calculate_health_insurance(self.basic_salary, self.percentage_health_insurance),2))
-        self.labels_respuestas["valor aporte pension"].text=str(round(calculate_retirement_insurance(self.basic_salary, self.percentage_retirement_insurance),2))
-        self.labels_respuestas["valor aporte solidadrio"].text=str(round(calculate_retirement_fund(self.basic_salary,self.percentage_retirement_fund),2))
-        self.labels_respuestas["valor incapasidades"].text=str(round(calculate_sick_leave(self.basic_salary,self.sick_leave),2))
+        self.labels_respuestas["valor aporte pensión"].text=str(round(calculate_retirement_insurance(self.basic_salary, self.percentage_retirement_insurance),2))
+        self.labels_respuestas["valor aporte solidario"].text=str(round(calculate_retirement_fund(self.basic_salary,self.percentage_retirement_fund),2))
+        self.labels_respuestas["valor incapacidades"].text=str(round(calculate_sick_leave(self.basic_salary,self.sick_leave),2))
         self.labels_respuestas["valor licencias"].text=str(round(calculate_leave(self.basic_salary,self.leave_days),2))
-        self.labels_respuestas["retencion en la fuente"].text= str(round(calculate_salary_holdback(self.basic_salary),2))
+        self.labels_respuestas["retención en la fuente"].text= str(round(calculate_salary_holdback(self.basic_salary),2))
         self.labels_respuestas["total a pagar"].text=str(self.result_total_to_pay)
         
         cerrar = Button(text="Cerrar")
