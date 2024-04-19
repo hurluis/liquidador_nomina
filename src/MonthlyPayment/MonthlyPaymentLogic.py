@@ -229,7 +229,7 @@ def calculate_sick_leave(basic_salary, days_sick_leave):
     Returns:
     - The calculated sick leave pay.
     """
-    if days_sick_leave < MAXIMUM_DAYS_SICKLEAVE and basic_salary >= MINIMUM_WAGE:
+    if days_sick_leave <= MAXIMUM_DAYS_SICKLEAVE and basic_salary >= MINIMUM_WAGE:
         return (basic_salary / MONTH_DAYS) * PERCENTAGE_SICK_LEAVE * days_sick_leave
     return 0
 

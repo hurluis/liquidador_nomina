@@ -237,7 +237,7 @@ class aplicacion(Screen):
         lista_respuestas=["Salario","Subsidion de transporte","Valor horas extras diurnas",
                           "valor horas extra nocturnas","Valor horas extras festivas",
                           "valor aporte salud","valor aporte pension","valor aporte solidadrio",
-                          "valor incapasidades","valor licencias","retencion en la fuente","total a pagar"]
+                          "valor incapacidades","valor licencias","retencion en la fuente","total a pagar"]
         
         self.labels_respuestas={}
         
@@ -256,7 +256,7 @@ class aplicacion(Screen):
         self.labels_respuestas["valor aporte salud"].text=str(round(calculate_health_insurance(self.basic_salary, self.percentage_health_insurance),2))
         self.labels_respuestas["valor aporte pension"].text=str(round(calculate_retirement_insurance(self.basic_salary, self.percentage_retirement_insurance),2))
         self.labels_respuestas["valor aporte solidadrio"].text=str(round(calculate_retirement_fund(self.basic_salary,self.percentage_retirement_fund),2))
-        self.labels_respuestas["valor incapasidades"].text=str(round(calculate_sick_leave(self.basic_salary,self.sick_leave),2))
+        self.labels_respuestas["valor incapacidades"].text=str(round(calculate_sick_leave(self.basic_salary,self.sick_leave),2))
         self.labels_respuestas["valor licencias"].text=str(round(calculate_leave(self.basic_salary,self.leave_days),2))
         self.labels_respuestas["retencion en la fuente"].text= str(round(calculate_salary_holdback(self.basic_salary),2))
         self.labels_respuestas["total a pagar"].text=str(self.result_total_to_pay)
