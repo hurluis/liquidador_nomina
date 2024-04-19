@@ -57,7 +57,7 @@ class Mein_menu(Screen):
         text_header = Label(text="Bienvenido a la aplicacion Calculadora de nomina", font_size=27, color=(1, 0, 0, 1),
                             bold=True, italic=True, font_name='Arial')
         header.add_widget(text_header)
-        img = Image(source=r'.\src\Gui\bienvenidos44.png')
+        img = Image(source=r'\bienvenidos44.png')
         header.add_widget(img)
         main_layout.add_widget(header)
 
@@ -168,7 +168,7 @@ class aplicacion(Screen):
         self.button_description = Button(text="Descripción", on_press=self.go_to_description)
         contenedor.add_widget(self.button_description)
 
-        imgudm = Image(source=r'.\src\Gui\3192b796-96f1-4894-a3f0-98e88584ce1e.png')
+        imgudm = Image(source=r'\3192b796-96f1-4894-a3f0-98e88584ce1e.png')
         contenedor.add_widget(imgudm)
         self.add_widget(contenedor)
     
