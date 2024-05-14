@@ -6,20 +6,13 @@ import MonthlyPayment.MonthlyPaymentLogic as mp
 
 import psycopg2
 import Model.TablesEmployer as Temployer
-import numpy as np
-
-PGHOST=''
-PGDATABASE=''
-PGUSER=''
-PGPASSWORD=''
-PGPORT=5432
-
+import Model.securitydb as st
 
 class WorkersIncomeData:
 
     def GetCursor():
         """ Establishes connection to the database and returns a cursor for querying """
-        connection = psycopg2.connect(database=PGDATABASE, user=PGUSER, password=PGPASSWORD, host=PGHOST, port=PGPORT)
+        connection = psycopg2.connect(database=st.PGDATABASE, user=st.PGUSER, password=st.PGPASSWORD, host=st.PGHOST, port=st.PGPORT)
         # All statements are executed through a cursor
         cursor = connection.cursor()
         return cursor
@@ -133,7 +126,7 @@ class  WorkersoutputsData():
     
     def GetCursor():
         """ Establishes connection to the database and returns a cursor for querying """
-        connection = psycopg2.connect(database=PGDATABASE, user=PGUSER, password=PGPASSWORD, host=PGHOST, port=PGPORT)
+        connection = psycopg2.connect(database=st.PGDATABASE, user=st.PGUSER, password=st.PGPASSWORD, host=st.PGHOST, port=st.PGPORT)
         # All statements are executed through a cursor
         cursor = connection.cursor()
         return cursor
@@ -256,4 +249,5 @@ f"""
 13. percentage_retirement_fund
 14. devengado
 15. deducido
+16. amounttopay
 """
