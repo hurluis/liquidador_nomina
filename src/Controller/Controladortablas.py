@@ -26,30 +26,35 @@ class WorkersIncomeData:
     
     def CreateTable():
         """ Creates the user table in the database """
-        cursor =  WorkersIncomeData.GetCursor()
-        cursor.execute("""CREATE TABLE Employerinput(
-                       name varchar(300)  NOT NULL,
-                       id varchar(300) PRIMARY KEY NOT NULL,
-                       basic_salary float  NOT NULL , 
-                       monthly_worked_days int  NOT NULL, 
-                       days_leave int  NOT NULL, 
-                       transportation_allowance float  NOT NULL,
-                       daytime_overtime_hours int  NOT NULL, 
-                       nighttime_overtime_hours int  NOT NULL, 
-                       daytime_holiday_overtime_hours int  NOT NULL,
-                       nighttime_holiday_overtime_hours int  NOT NULL, 
-                       sick_leave_days int  NOT NULL, 
-                       health_contribution_percentage float  NOT NULL,
-                       pension_contribution_percentage float  NOT NULL, 
-                       solidarity_pension_fund_contribution_percentage float NOT NULL ); """)
-        cursor.connection.commit()
+        try:
+            cursor =  WorkersIncomeData.GetCursor()
+            cursor.execute("""CREATE TABLE Employerinput(
+                        name varchar(300)  NOT NULL,
+                        id varchar(300) PRIMARY KEY NOT NULL,
+                        basic_salary float  NOT NULL , 
+                        monthly_worked_days int  NOT NULL, 
+                        days_leave int  NOT NULL, 
+                        transportation_allowance float  NOT NULL,
+                        daytime_overtime_hours int  NOT NULL, 
+                        nighttime_overtime_hours int  NOT NULL, 
+                        daytime_holiday_overtime_hours int  NOT NULL,
+                        nighttime_holiday_overtime_hours int  NOT NULL, 
+                        sick_leave_days int  NOT NULL, 
+                        health_contribution_percentage float  NOT NULL,
+                        pension_contribution_percentage float  NOT NULL, 
+                        solidarity_pension_fund_contribution_percentage float NOT NULL ); """)
+            cursor.connection.commit()
+        except:
+            pass
     
     
     def Droptable():
-        cursor=WorkersIncomeData.GetCursor()
-        cursor.execute(""" DROP TABLE Employerinput""")
-        cursor.connection.commit()
-    
+        try:
+            cursor=WorkersIncomeData.GetCursor()
+            cursor.execute(""" DROP TABLE Employerinput""")
+            cursor.connection.commit()
+        except:
+            pass
     
     def Insert(EMPLOYER: Temployer.Employerinput):
         try:
@@ -135,32 +140,37 @@ class  WorkersoutputsData():
     
     def CreateTable():
         """ Creates the user table in the database """
-        cursor = WorkersoutputsData.GetCursor()
-        cursor.execute("""CREATE TABLE Employeroutput(
-                       name varchar(300) NOT NULL,
-                       id varchar(300) PRIMARY KEY NOT NULL,
-                       basic_salary float NOT NULL, 
-                       workdays int NOT NULL, 
-                       sick_leave int NOT NULL, 
-                       transportation_aid float NOT NULL,
-                       dayshift_extra_hours int NOT NULL, 
-                       nightshift_extra_hours int NOT NULL, 
-                       dayshift_extra_hours_holidays int NOT NULL,
-                       nightshift_extra_hours_holidays int NOT NULL, 
-                       leave_days int NOT NULL, 
-                       percentage_health_insurance float NOT NULL,
-                       percentage_retirement_insurance float NOT NULL, 
-                       percentage_retirement_fund float NOT NULL, 
-                       devengado float NOT NULL,
-                       deducido float NOT NULL,  
-                       amounttopay float NOT NULL) ; """)
-        cursor.connection.commit()
+        try:
+            cursor = WorkersoutputsData.GetCursor()
+            cursor.execute("""CREATE TABLE Employeroutput(
+                        name varchar(300) NOT NULL,
+                        id varchar(300) PRIMARY KEY NOT NULL,
+                        basic_salary float NOT NULL, 
+                        workdays int NOT NULL, 
+                        sick_leave int NOT NULL, 
+                        transportation_aid float NOT NULL,
+                        dayshift_extra_hours int NOT NULL, 
+                        nightshift_extra_hours int NOT NULL, 
+                        dayshift_extra_hours_holidays int NOT NULL,
+                        nightshift_extra_hours_holidays int NOT NULL, 
+                        leave_days int NOT NULL, 
+                        percentage_health_insurance float NOT NULL,
+                        percentage_retirement_insurance float NOT NULL, 
+                        percentage_retirement_fund float NOT NULL, 
+                        devengado float NOT NULL,
+                        deducido float NOT NULL,  
+                        amounttopay float NOT NULL) ; """)
+            cursor.connection.commit()
+        except:
+            pass
 
     def Droptable():
-        cursor=WorkersoutputsData.GetCursor()
-        cursor.execute(""" DROP TABLE Employeroutput""")
-        cursor.connection.commit()
-    
+        try:
+            cursor=WorkersoutputsData.GetCursor()
+            cursor.execute(""" DROP TABLE Employeroutput""")
+            cursor.connection.commit()
+        except:
+            pass
     
     def PopulateTable():
         cursor = WorkersoutputsData.GetCursor()
