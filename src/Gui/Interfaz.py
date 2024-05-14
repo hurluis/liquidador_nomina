@@ -189,6 +189,7 @@ class aplicacion(Screen):
             self.percentage_retirement_insurance = float(self.text_inputs["porcentaje aporte a pensión"].text)/100 #porcentaje
             self.percentage_retirement_fund = float(self.text_inputs["porcentaje aporte a fondo de solidaridad pensional"].text)/100 #porcentaje
             
+            
             self.verificar_result_total = mp.SettlementParameters(self.basic_salary,self. workdays, self.sick_leave, self.transportation_aid,
                                                              self.dayshift_extra_hours, self.nightshift_extra_hours,
                                                              self.dayshift_extra_hours_holidays,
