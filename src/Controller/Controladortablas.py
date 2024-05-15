@@ -42,6 +42,12 @@ class WorkersIncomeData:
     
     
     def Droptable():
+        """
+        Drop the 'Employerinput' table if it exists in the database.
+
+        This function attempts to drop the table 'Employerinput' from the database. 
+        If the table does not exist or any error occurs during the execution, it is ignored.
+        """
         try:
             cursor=WorkersIncomeData.GetCursor()
             cursor.execute(""" DROP TABLE Employerinput""")
@@ -50,6 +56,7 @@ class WorkersIncomeData:
             pass
     
     def Insert(EMPLOYER: Temployer.Employerinput):
+        """  Insert an employer's data into the 'Employerinput' table."""
         try:
             cursor =  WorkersIncomeData.GetCursor()
             Temployer.Employerinput.primary_key(EMPLOYER.name,EMPLOYER.id, WorkersIncomeData)
@@ -75,6 +82,7 @@ class WorkersIncomeData:
     
     
     def DeleteWorker(NAME,ID):
+        """  Delete a worker from the 'Employerinput' table based on the provided name and ID. """
         cursor =  WorkersIncomeData.GetCursor() 
         cursor.execute(f""" DELETE 
                         FROM Employerinput
@@ -83,6 +91,7 @@ class WorkersIncomeData:
         cursor.connection.commit() 
     
     def Update(NAME,ID,KEYUPDATE,VALUEUPDATE):
+        """ Update a worker's data in the 'Employerinput' table."""
         try:
             Temployer.Employerinput.valor_presente(KEYUPDATE)
             cursor =  WorkersIncomeData.GetCursor()
@@ -96,6 +105,7 @@ class WorkersIncomeData:
             pass
 
     def QueryWorker(NAME, ID):
+        """ Query the data of a worker from the 'Employerinput' table based on the provided name and ID. """
         cursor = WorkersIncomeData.GetCursor()
         cursor.execute(f"""SELECT *
                         FROM Employerinput
@@ -158,6 +168,7 @@ class  WorkersoutputsData():
             pass
 
     def Droptable():
+        """ Drop the 'Employeroutput' table if it exists in the database. """
         try:
             cursor=WorkersoutputsData.GetCursor()
             cursor.execute(""" DROP TABLE Employeroutput""")
@@ -166,6 +177,10 @@ class  WorkersoutputsData():
             pass
     
     def PopulateTable():
+        """ Populate the 'Employeroutput' table based on the data from the 'Employerinput' table.
+
+            This function retrieves data from the 'Employerinput' table and calculates additional attributes 
+            based on the provided data. It then inserts the calculated data into the 'Employeroutput' table."""
         cursor = WorkersoutputsData.GetCursor()
         cursorWorkersIncomeData = WorkersIncomeData.GetCursor()
         cursorWorkersIncomeData.execute("SELECT * FROM Employerinput")
@@ -203,6 +218,7 @@ class  WorkersoutputsData():
             cursor.connection.commit()
 
     def QueryWorker(NAME, ID):
+        """ Query the data of a worker from the 'Employeroutput' table based on the provided name and ID. """
         try:
             cursor = WorkersIncomeData.GetCursor()
             cursor.execute(f"""SELECT *
