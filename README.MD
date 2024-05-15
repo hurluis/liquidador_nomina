@@ -46,29 +46,37 @@ El proyecto presenta una arquitectura modular y bien estructurada, diseñada par
 9. securitydb.py
 10. DatabaseTest.py
 11. consoledb.py
-* **MonthlyPaymentLogic.py**:
 
-Es el archivo principal, aquí se guarda la lógica que el programa debe realizar. Al inicio contiene algunas constantes (`EXTRA_HOUR_DAYSHIFT`, `EXTRA_HOUR_NIGHTSHIFT`, `EXTRA_HOUR_DAYSHIFT_HOLIDAYS`, `EXTRA_HOUR_NIGHTSHIFT_HOLIDAYS`) que se requieren para el cálculo de la nómina. Luego están las clases de error, las cuales se aseguran de avisarle al usuario cuáles errores ha cometido. Después de esto sigue la clase `SettlementParameters` la cual se encarga de almacenar las variables ingresadas por el usuario y revisar que estas estén bien. Por último, están todas las funciones complementarias que nos ayudan a calcular los valores devengados y deducidos y calcular la nómina del trabajador.
+La estructuras por carpetas es la siguiente
 
-**MonthlyPaymentTest.py**:
+1. **sql**: 
+   - Contiene scripts SQL para las operaciones de base de datos.
 
-En este archivo se usa la biblioteca `unittest` para llevar a cabo los casos de prueba donde el programa debe correr perfectamente.
+2. **src**:
+   - **MonthlyPaymentLogic.py**: Contiene la lógica principal del cálculo de la nómina.
+   - **Console.py**: Interfaz de consola para interactuar con el programa.
+   - **interfaz.py**: Interfaz gráfica del usuario.
+   - **Controladortablas.py**: Controladores de las tablas.
+   - **TablesEmployer.py**: Definición de las tablas del empleador.
+   - **securitydb.py**: Manejo de la seguridad de la base de datos.
+   - **consoledb.py**: Interfaz de consola para la base de datos.
 
-**ExtraordinaryCasesTest.py**:
+3. **test**:
+   - **MonthlyPaymentTest.py**: Pruebas unitarias para casos normales.
+   - **ExtraordinaryCasesTest.py**: Pruebas unitarias para casos extraordinarios.
+   - **ErrorCaseTest.py**: Pruebas unitarias para casos de error.
+   - **DatabaseTest.py**: Pruebas unitarias para la base de datos.
 
-En este archivo se usa la biblioteca `unittest` para llevar a cabo los casos de prueba donde el programa debe correr casos que no son muy comunes y si no se tratan de forma diferente pueden causar errores.
+4. **.gitignore**: Archivos y carpetas a ignorar por Git.
+5. **LICENSE**: Licencia MIT del proyecto.
+6. **README.md**: Documentación del proyecto, explicación del propósito, instalación y ejecución.
 
-**ErrorCaseTest.py**:
 
-En este archivo se usa la biblioteca `unittest` para llevar a cabo los casos de prueba donde el programa debe fallar, cuando el usuario ingrese datos erróneos.
+El código utiliza la libreria estándar de Python, `math`, que proporciona funciones matemáticas básicas, como la función `trunc()` utilizada para truncar valores decimales. Esta biblioteca es fundamental para realizar cálculos precisos dentro del programa, como calcular porcentajes o redondear valores según sea necesario.
 
-**Console.py**:
+El código hace uso de la libreria `unittest`, que es un marco de pruebas unitarias integrado en Python. Las pruebas unitarias son esenciales para verificar la corrección del código y garantizar su funcionamiento esperado a medida que se realizan cambios o actualizaciones en el proyecto.
 
-Esta es la interfaz por consola, donde el usuario interactúa con el programa sin ver el código fuente.
-
-El código utiliza la biblioteca estándar de Python, `math`, que proporciona funciones matemáticas básicas, como la función `trunc()` utilizada para truncar valores decimales. Esta biblioteca es fundamental para realizar cálculos precisos dentro del programa, como calcular porcentajes o redondear valores según sea necesario.
-
-Además, el código hace uso de la biblioteca `unittest`, que es un marco de pruebas unitarias integrado en Python. Las pruebas unitarias son esenciales para verificar la corrección del código y garantizar su funcionamiento esperado a medida que se realizan cambios o actualizaciones en el proyecto.
+Además el código hace uso de la libreria `pytest` que es una librería de pruebas para Python que permite escribir pruebas simples y escalables.
 
 
 
