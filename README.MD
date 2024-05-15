@@ -20,13 +20,16 @@ Este código proporciona una herramienta completa y robusta para gestionar efici
 
 * **Instalación de la libreria kivy**: Es un framework de código abierto en Python para desarrollar aplicaciones multitáctiles. Se utiliza principalmente para crear aplicaciones con interfaces de usuario (UI) atractivas y dinámicas que pueden funcionar en varias plataformas, incluyendo Windows, macOS, Linux, iOS y Android.
 
-La instalación se puede llevar a cabo mediante el siguiente código en la terminal: <pip install kivy>
+La instalación se puede llevar a cabo mediante el siguiente código en la terminal: `pip install kivy`
 
 * **Instalacion de la extensión kivymd**: Esta es una extensión de Kivy que proporciona una implementación de los principios de Material Design de Google para el framework Kivy. Material Design es un sistema de diseño desarrollado por Google que se centra en la usabilidad y la estética, proporcionando una guía visual coherente para el diseño de interfaces de usuario.
 
-La instalación se puede llevar a cabo mediante el siguiente código en la terminal: <pip install kivymd>
+La instalación se puede llevar a cabo mediante el siguiente código en la terminal: `pip install kivymd `
 
 * **Datos de entrada relevantes**: Al ejecutar el programa se necesitará tener acceso a los datos necesarios para proporcionar los parámetros requeridos por el programa, como el salario básico, los días laborables, los días de licencia médica, entre otros.
+
+* **Instalación de psycopg2**: Esa es una librería de Python que proporciona una interfaz para interactuar con bases de datos PostgreSQL.
+La instalación se puede llevar a cabo mediante el siguiente código en la terminal:  `pip install psycopg2` 
 
 # ¿Cómo está hecho?
 
@@ -38,6 +41,11 @@ El proyecto presenta una arquitectura modular y bien estructurada, diseñada par
 4. ErrorCaseTest.py
 5. Console.py
 6. interfaz.py
+7. Controladortablas.py
+8. TablesEmployer.py
+9. securitydb.py
+10. DatabaseTest.py
+11. consoledb.py
 * **MonthlyPaymentLogic.py**:
 
 Es el archivo principal, aquí se guarda la lógica que el programa debe realizar. Al inicio contiene algunas constantes (`EXTRA_HOUR_DAYSHIFT`, `EXTRA_HOUR_NIGHTSHIFT`, `EXTRA_HOUR_DAYSHIFT_HOLIDAYS`, `EXTRA_HOUR_NIGHTSHIFT_HOLIDAYS`) que se requieren para el cálculo de la nómina. Luego están las clases de error, las cuales se aseguran de avisarle al usuario cuáles errores ha cometido. Después de esto sigue la clase `SettlementParameters` la cual se encarga de almacenar las variables ingresadas por el usuario y revisar que estas estén bien. Por último, están todas las funciones complementarias que nos ayudan a calcular los valores devengados y deducidos y calcular la nómina del trabajador.
@@ -61,6 +69,8 @@ Esta es la interfaz por consola, donde el usuario interactúa con el programa si
 El código utiliza la biblioteca estándar de Python, `math`, que proporciona funciones matemáticas básicas, como la función `trunc()` utilizada para truncar valores decimales. Esta biblioteca es fundamental para realizar cálculos precisos dentro del programa, como calcular porcentajes o redondear valores según sea necesario.
 
 Además, el código hace uso de la biblioteca `unittest`, que es un marco de pruebas unitarias integrado en Python. Las pruebas unitarias son esenciales para verificar la corrección del código y garantizar su funcionamiento esperado a medida que se realizan cambios o actualizaciones en el proyecto.
+
+
 
 # Estructura sugerida:
 
@@ -87,9 +97,9 @@ Además, el código hace uso de la biblioteca `unittest`, que es un marco de pru
 3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
 
 Dependiendo del caso de prueba se copia lo siguiente:
-4) Casos normales: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/MonthlyPaymentTest.py`
+4) Casos normales: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/test/MonthlyPaymentTest.py`
 
-5) Casos extraordinarios: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ExtraordinaryCasesTest.py`
+5) Casos extraordinarios: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/test/ExtraordinaryCasesTest.py`
 
 6) Casos de error: ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/ErrorCaseTest.py`
 
@@ -102,3 +112,23 @@ Dependiendo del caso de prueba se copia lo siguiente:
 3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
 
 4) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/Console/Console.py`
+
+# Como ejecutar la pruebas de la base de datos
+
+1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
+
+2) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
+
+3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
+
+4) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/DatabaseTest.py`
+
+# Como ejecutar la interfaz por consola de la base de datos
+
+1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
+
+2) Ahora copia  `git clone https://github.com/Tmurillo23/Liquidador_para_nomina.git`
+
+3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
+
+4) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/view/consoledb.py`
