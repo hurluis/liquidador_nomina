@@ -226,8 +226,22 @@ while True:
 
         else:
             print(f"La palabra '{valor}' no está dentro de las opciones")
+
+    except Temployer.faileprimarykey as primarykey_:
+        print(f"Se produjo un error: {primarykey_}")
+
+    except Temployer.not_exist as not_exist_:
+        print(f"Se produjo un error: {not_exist_}")
+
+    except Temployer.not_found as not_found_:
+        print(f"Se produjo un error: {not_found_}")
+
+    except Temployer.updatenotfount as updatenotfount_:
+        print(f"Se produjo un error: {updatenotfount_}")
+
     except Exception as e:
         print(f"Se produjo un error: {e}")
+
     
     
 
