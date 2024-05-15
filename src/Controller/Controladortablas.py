@@ -69,7 +69,7 @@ class WorkersIncomeData:
         except Temployer.faileprimarykey as error_primaey_key:
             cursor.connection.rollback()
         
-        except Temployer.notexist as error_not_exist:
+        except Temployer.not_exist as error_not_exist:
             cursor.connection.rollback()
     
     
