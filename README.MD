@@ -123,7 +123,7 @@ Dependiendo del caso de prueba se copia lo siguiente:
 
 4) Para poder ejecutar las pruebas se debe modificar el archivo `securitydb.py que se encuentra en ./Liquidador_para_nomina/src/Model/securitydb.py ` Este archivo debe
 ser modificado usando un procesador de texto por consola como nano o usando el comando `notepad ./Liquidador_para_nomina/src/Model/securitydb.py `
-En este archivo debe ingresar los datos de conexión a su base de datos. .
+En este archivo debe ingresar los datos de conexión a su base de datos.
 5) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/test/DatabaseTest.py`
 
 # Como ejecutar la interfaz por consola de la base de datos
@@ -134,4 +134,8 @@ En este archivo debe ingresar los datos de conexión a su base de datos. .
 
 3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
 
-4) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/view/consoledb.py`
+4) Para poder ejecutar la interfaz se debe modificar el archivo `securitydb.py que se encuentra en ./Liquidador_para_nomina/src/Model/securitydb.py ` Este archivo debe
+ser modificado usando un procesador de texto por consola como nano o usando el comando `notepad ./Liquidador_para_nomina/src/Model/securitydb.py `
+En este archivo debe ingresar los datos de conexión a su base de datos.
+
+5) ahora copia el siguiente codigo en la terminal `python ./Liquidador_para_nomina/src/view/consoledb.py`
