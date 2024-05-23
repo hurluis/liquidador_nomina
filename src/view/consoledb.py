@@ -1,12 +1,12 @@
 import unittest
 import sys
-sys.path.append("Liquidador_para_nomina/src")
+sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
 sys.path.append("./src")
-from MonthlyPayment.MonthlyPaymentLogic import *
-import MonthlyPayment.MonthlyPaymentLogic as mp
-from Controller.Controladortablas import WorkersIncomeData
-from Controller.Controladortablas import WorkersoutputsData
-import Model.TablesEmployer as Temployer
+from src.MonthlyPayment.MonthlyPaymentLogic import *
+import src.MonthlyPayment.MonthlyPaymentLogic as mp
+from src.Controller.Controladortablas import WorkersIncomeData
+from src.Controller.Controladortablas import WorkersoutputsData
+import src.Model.TablesEmployer as Temployer
 import pandas as pd
 
 print(f"""Bienvenido a este calculador de nómina, el cual va a tener la posibilidad de conectarse a una base de datos.

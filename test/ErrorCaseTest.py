@@ -1,9 +1,9 @@
 import unittest
 import sys
-sys.path.append("Liquidador_para_nomina/src")
+sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
 sys.path.append("./src")
-from MonthlyPayment.MonthlyPaymentLogic import *
-import MonthlyPayment.MonthlyPaymentLogic as mp
+from src.MonthlyPayment.MonthlyPaymentLogic import *
+import src.MonthlyPayment.MonthlyPaymentLogic as mp
 
 class MonthlyPaymentExtraordinary(unittest.TestCase):
 

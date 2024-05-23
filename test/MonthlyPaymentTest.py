@@ -3,10 +3,10 @@
 # We import the library we will use to perform unit tests; in this case, the unittest library.
 import unittest
 import sys
-sys.path.append("Liquidador_para_nomina/src")
+sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
 sys.path.append("./src")
-from MonthlyPayment.MonthlyPaymentLogic import *
-import MonthlyPayment.MonthlyPaymentLogic as mp
+from src.MonthlyPayment.MonthlyPaymentLogic import *
+import src.MonthlyPayment.MonthlyPaymentLogic as mp
 
 # We create the class that will contain the unit tests.
 class TestMonthlyPayment(unittest.TestCase):

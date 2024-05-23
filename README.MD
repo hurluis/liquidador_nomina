@@ -1,8 +1,8 @@
 # README
 
 ## Autores
-* Tatiana Murillo Mosquera
-* David López Rivera
+* Daniel Alzate Arias
+* Luis Miguel Giraldo
 
 # ¿Para qué sirve?
 
