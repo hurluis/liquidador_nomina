@@ -16,7 +16,7 @@ Este código proporciona una herramienta completa y robusta para gestionar efici
 
 # Prerrequisitos
 
-* **Instalación de Python**: Python es el lenguaje de programación utilizado en este programa, por lo que la persona que desee ejecutarlo deberá tener Python instalado en su sistema. Puede descargar Python desde el sitio web oficial de Python ([Instalador de Python](https://www.python.org/)) e instalarlo siguiendo las instrucciones proporcionadas.
+* **Instalación de Python**: "Python" es el lenguaje de programación utilizado en este programa, por lo que la persona que desee ejecutarlo deberá tener Python instalado en su sistema. Puede descargar Python desde el sitio web oficial de Python ([Instalador de Python](https://www.python.org/)) e instalarlo siguiendo las instrucciones proporcionadas.
 
 * **Instalación de la libreria kivy**: Es un framework de código abierto en Python para desarrollar aplicaciones multitáctiles. Se utiliza principalmente para crear aplicaciones con interfaces de usuario (UI) atractivas y dinámicas que pueden funcionar en varias plataformas, incluyendo Windows, macOS, Linux, iOS y Android.
 
