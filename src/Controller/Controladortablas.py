@@ -1,15 +1,14 @@
 import sys
+import psycopg2
 
+
+# Agregar el directorio 'src' al path para permitir importaciones relativas
 sys.path.append("liquidador_nomina/src")
 sys.path.append("./src")
-from Model.MonthlyPaymentLogic import *
+
 import Model.MonthlyPaymentLogic as mp
-
-
-import psycopg2
 import Model.TablesEmployer as Temployer
 import Model.securitydb as st
-
 
 class WorkersIncomeData:
 

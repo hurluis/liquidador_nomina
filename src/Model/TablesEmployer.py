@@ -1,4 +1,14 @@
 import sys
+import os
+
+# Obtenemos la ruta del directorio actual del script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Obtenemos la ruta del directorio principal del proyecto
+project_dir = os.path.abspath(os.path.join(current_dir, ".."))
+# Agregamos el directorio principal del proyecto al sys.path
+sys.path.append(project_dir)
+
+# Ahora podemos importar los módulos del proyecto
 from MonthlyPaymentLogic import *
 import MonthlyPaymentLogic as mp
 #from Controller.Controladortablas import WorkersIncomeData
