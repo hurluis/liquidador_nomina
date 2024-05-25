@@ -16,6 +16,7 @@ sys.path.append(model_dir)
 
 # Importaciones
 from Model.MonthlyPaymentLogic import *
+import Model.MonthlyPaymentLogic as mp
 import Model.TablesEmployer as Temployer
 import Model.securitydb as st
 
