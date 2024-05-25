@@ -1,12 +1,15 @@
 import sys
-sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
+
+sys.path.append("liquidador_nomina/src")
 sys.path.append("./src")
-from src.MonthlyPayment.MonthlyPaymentLogic import *
-import src.MonthlyPayment.MonthlyPaymentLogic as mp
+from Model.MonthlyPaymentLogic import *
+import Model.MonthlyPaymentLogic as mp
+
 
 import psycopg2
-import src.Model.TablesEmployer as Temployer
-import src.Model.securitydb as st
+import Model.TablesEmployer as Temployer
+import Model.securitydb as st
+
 
 class WorkersIncomeData:
 

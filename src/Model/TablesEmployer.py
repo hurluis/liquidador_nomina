@@ -1,11 +1,6 @@
 import sys
-import os
-
-# Agregar el directorio padre al path para permitir importaciones relativas
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-sys.path.append("src")
-from src.MonthlyPayment.MonthlyPaymentLogic import *
-import src.MonthlyPayment.MonthlyPaymentLogic as mp
+from MonthlyPaymentLogic import *
+import MonthlyPaymentLogic as mp
 #from Controller.Controladortablas import WorkersIncomeData
 
 class faileprimarykey(Exception):

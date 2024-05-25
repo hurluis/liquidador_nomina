@@ -1,11 +1,14 @@
 
 
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, Blueprint
+
+blueprint = Blueprint( "vista_usuarios", __name__, "templates" )
+
+
 import sys
-sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
-sys.path.append("./src")
-from src.Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
-from src.MonthlyPayment.MonthlyPaymentLogic import SettlementParameters, calculate_settlement
+sys.path.append("src")
+from Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
+from Model.MonthlyPaymentLogic import SettlementParameters, calculate_settlement
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"

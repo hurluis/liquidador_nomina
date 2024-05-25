@@ -7,8 +7,8 @@ import os
 
 # Agregar el directorio padre al path para permitir importaciones relativas
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.MonthlyPayment.MonthlyPaymentLogic import *
-import src.MonthlyPayment.MonthlyPaymentLogic as mp
+from src.Model.MonthlyPaymentLogic import *
+import src.Model.MonthlyPaymentLogic as mp
 
 # We create the class that will contain the unit tests.
 class TestMonthlyPayment(unittest.TestCase):

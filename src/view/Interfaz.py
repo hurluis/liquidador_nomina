@@ -1,9 +1,9 @@
 import sys
 
-sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
+sys.path.append("liquidador_nomina/src")
 sys.path.append("./src")
-from src.MonthlyPayment.MonthlyPaymentLogic import *
-import src.MonthlyPayment.MonthlyPaymentLogic as mp
+from Model.MonthlyPaymentLogic import *
+import Model.MonthlyPaymentLogic as mp
 
 from kivy.app import App  # Es necesario para iniciar y ejecutar una aplicación Kivy.
 from kivy.uix.image import Image

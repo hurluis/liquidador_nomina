@@ -1,14 +1,16 @@
 import sys
-import os
 
-# Agregar el directorio padre al path para permitir importaciones relativas
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.MonthlyPayment.MonthlyPaymentLogic import *
-import src.MonthlyPayment.MonthlyPaymentLogic as mp
+
+# Agregar el directorio 'src' al path para permitir importaciones relativas
+sys.path.append("liquidador_nomina/src")
+sys.path.append("./src")
+
+from Model.MonthlyPaymentLogic import *
+import Model.MonthlyPaymentLogic as mp
 
 print(f"""
-El propósito del programa es calcular el salario mensual de un empleado c
-onsiderando diferentes variables como el salario básico, días laborados, 
+El propósito del programa es calcular el salario mensual de un empleado 
+considerando diferentes variables como el salario básico, días laborados, 
 días de licencia, y días de incapacidad, entre otros.
 
 Para llevar a cabo este cálculo, se utilizan varias constantes:
