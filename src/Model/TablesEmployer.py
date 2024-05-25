@@ -1,5 +1,7 @@
 import sys
 import os
+from MonthlyPaymentLogic import *
+
 
 # Obtenemos la ruta del directorio actual del script
 current_dir = os.path.dirname(os.path.abspath(__file__))

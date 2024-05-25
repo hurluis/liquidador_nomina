@@ -1,14 +1,24 @@
 import sys
+import os
 import psycopg2
 
+# Obtener la ruta del directorio actual del script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Obtener la ruta del directorio principal del proyecto
+project_dir = os.path.abspath(os.path.join(current_dir, ".."))
+# Obtener la ruta del directorio del modelo
+model_dir = os.path.join(project_dir, "Model")
 
-# Agregar el directorio 'src' al path para permitir importaciones relativas
-sys.path.append("liquidador_nomina/src")
-sys.path.append("./src")
 
-import Model.MonthlyPaymentLogic as mp
+# Agregar la ruta del directorio principal del proyecto y del modelo al sys.path
+sys.path.append(project_dir)
+sys.path.append(model_dir)
+
+# Importaciones
+from Model.MonthlyPaymentLogic import *
 import Model.TablesEmployer as Temployer
 import Model.securitydb as st
+
 
 class WorkersIncomeData:
 
