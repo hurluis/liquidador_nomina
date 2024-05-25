@@ -14,7 +14,7 @@ from src.view_web import vista_usuarios
 # la configuración que queremos para nuestra aplicación
 app = Flask(__name__)     
 
-app.register_blueprint( vista_usuarios.blueprint )
+app.register_blueprint(vista_usuarios.blueprint )
 
 
 # Esta linea permite que nuestra aplicación se ejecute individualmente

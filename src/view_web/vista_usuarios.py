@@ -13,11 +13,15 @@ from Model.MonthlyPaymentLogic import SettlementParameters, calculate_settlement
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@blueprint.route("/")
+def home():
+    return render_template('inicio.html')
 
-@app.route('/calculate', methods=['POST'])
+@blueprint.route('/crear-usuario')
+def index():
+    return render_template('crear-usuario.html')
+
+@blueprint.route('/calculate', methods=['POST'])
 def calculate():
     try:
         data = {
