@@ -1,7 +1,7 @@
 import unittest
 import sys
-sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
-sys.path.append("./src")
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.MonthlyPayment.MonthlyPaymentLogic import *
 import src.MonthlyPayment.MonthlyPaymentLogic as mp
 from src.Controller.Controladortablas import WorkersIncomeData

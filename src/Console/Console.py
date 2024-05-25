@@ -1,6 +1,8 @@
 import sys
-sys.path.append("C:/Users/ACER/Liquidador_para_nomina")
-sys.path.append("./src")
+import os
+
+# Agregar el directorio padre al path para permitir importaciones relativas
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.MonthlyPayment.MonthlyPaymentLogic import *
 import src.MonthlyPayment.MonthlyPaymentLogic as mp
 

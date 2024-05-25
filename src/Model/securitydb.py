@@ -1,5 +1,7 @@
-PGHOST='ep-late-dew-a5zxdzl8.us-east-2.aws.neon.tech'
-PGDATABASE='neondb'
-PGUSER='neondb_owner'
-PGPASSWORD='Gl1LUdEphgR7'
-PGPORT=''
+# Do not expose your Neon credentials to the browser
+
+PGHOST='ep-icy-frost-a44ohbcz.us-east-1.aws.neon.tech'
+PGDATABASE='Interfaz'
+PGUSER='Interfaz_owner'
+PGPASSWORD='UyRJM75DXrCb'
+PGPORT=5432
