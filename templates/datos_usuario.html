@@ -7,22 +7,11 @@
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-   
-    <div class="container">
-        <h1>Datos del Usuario</h1>
-        <ul>
-            <li>Salario Básico: {{ basic_salary }}</li>
-            <li>Días Trabajados: {{ workdays }}</li>
-            <li>Días de Licencia por Enfermedad: {{ sick_leave }}</li>
-            <li>Auxilio de Transporte: {{ transportation_aid }}</li>
-            <li>Horas Extras Diurnas: {{ dayshift_extra_hours }}</li>
-            <li>Horas Extras Nocturnas: {{ nightshift_extra_hours }}</li>
-            <li>Horas Extras Diurnas en Festivos: {{ dayshift_extra_hours_holidays }}</li>
-            <li>Horas Extras Nocturnas en Festivos: {{ nightshift_extra_hours_holidays }}</li>
-            <li>Días de Licencia: {{ leave_days }}</li>
-            <li>Porcentaje de Seguro de Salud: {{ percentage_health_insurance }}</li>
-            <li>Porcentaje de Aporte a Pensiones: {{ percentage_retirement_insurance }}</li>
-            <li>Porcentaje de Fondo de Retiro: {{ percentage_retirement_fund }}</li>
+    <h1>Datos del Usuario Insertado</h1>
+    <p>{{ mensaje }}</p>
+    <ul>
+        <li>Nombre: {{ nuevo_empleado.name }}</li>
+        <li>Salario Básico: {{ nuevo_empleado.basic_salary }}</li>
         </ul>
     </div>
 </body>

@@ -9,8 +9,9 @@ from Model.MonthlyPaymentLogic import SettlementParameters, calculate_settlement
 import Model.TablesEmployer as Temployer
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
+# Definir la clase NuevoEmpleado
 class NuevoEmpleado:
-    def __init__(self, id, name, basic_salary, workdays, sick_leave, transportation_aid, dayshift_extra_hours, nightshift_extra_hours, dayshift_extra_hours_holidays, nightshift_extra_hours_holidays, leave_days, percentage_health_insurance, percentage_retirement_insurance, percentage_retirement_fund):
+    def __init__(self, name, basic_salary, workdays, sick_leave, transportation_aid, dayshift_extra_hours, nightshift_extra_hours, dayshift_extra_hours_holidays, nightshift_extra_hours_holidays, leave_days, percentage_health_insurance, percentage_retirement_insurance, percentage_retirement_fund, id=None):
         self.id = id
         self.name = name
         self.basic_salary = basic_salary
@@ -26,15 +27,15 @@ class NuevoEmpleado:
         self.percentage_retirement_insurance = percentage_retirement_insurance
         self.percentage_retirement_fund = percentage_retirement_fund
 
+# Definir las rutas y las funciones asociadas
 @blueprint.route("/")
 def home():
     return render_template('inicio.html')
 
-
 @blueprint.route('/crear-usuario', methods=['GET', 'POST'])
 def crear_usuario():
     if request.method == 'POST':
-        # Obtenemos los datos del formulario utilizando request.form
+        # Obtener los datos del formulario
         name = request.form.get('name')
         basic_salary = request.form.get('basic_salary')
         workdays = request.form.get('workdays')
@@ -50,7 +51,7 @@ def crear_usuario():
         percentage_retirement_fund = request.form.get('percentage_retirement_fund')
 
         # Crear una instancia de NuevoEmpleado con los datos del formulario
-        nuevo_empleado = NuevoEmpleado(name, basic_salary)
+        nuevo_empleado = NuevoEmpleado(name=name, basic_salary=basic_salary, workdays=workdays, sick_leave=sick_leave, transportation_aid=transportation_aid, dayshift_extra_hours=dayshift_extra_hours, nightshift_extra_hours=nightshift_extra_hours, dayshift_extra_hours_holidays=dayshift_extra_hours_holidays, nightshift_extra_hours_holidays=nightshift_extra_hours_holidays, leave_days=leave_days, percentage_health_insurance=percentage_health_insurance, percentage_retirement_insurance=percentage_retirement_insurance, percentage_retirement_fund=percentage_retirement_fund)
 
         # Insertar el nuevo empleado en la base de datos
         WorkersIncomeData.Insert(nuevo_empleado)
@@ -58,7 +59,7 @@ def crear_usuario():
         # Redirigir al usuario a la página de resultado después de insertar los datos
         return redirect(url_for('vista_usuarios.resultado'))
 
-    # Si el método es GET o si se procesaron los datos del formulario, renderizamos el formulario
+    # Si el método es GET o si se procesaron los datos del formulario, renderizar el formulario
     return render_template('crear_usuario.html')
 
 @blueprint.route('/resultado')
@@ -81,6 +82,9 @@ def eliminar_usuario():
     # Aquí podrías manejar la lógica para eliminar un usuario
     return render_template('eliminar_usuario.html')
 
+# Registrar el blueprint en la aplicación Flask
+app.register_blueprint(blueprint)
+
+# Ejecutar la aplicación
 if __name__ == "__main__":
-    app.register_blueprint(blueprint)
     app.run(debug=True)
