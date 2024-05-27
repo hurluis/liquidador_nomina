@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado</title>
+
 </head>
+
 <body>
-    <div class="container">
-        <h1>¡Usuario creado con éxito!</h1>
-        <p>Los datos del usuario han sido guardados correctamente en la base de datos.</p>
-        <a href="/">Volver al inicio</a> 
-    </div>
+    <h1>{{mensaje}}</h1>
+    <!-- La etiqueta table se usa para crear tablas en HTML -->
+    <table>
+        <!-- El elemento tr describe una fila de la tabla -->
+        <tr>
+            <!-- Cada elemento td corresponde a una celda dentro de la fila -->
+            <td>Cedula</td>
+            <td>{{user.cedula}}</td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td>{{user.nombre}}</td>
+        </tr>
+        
+
+    </table>
+
+
 </body>
+
 </html>
