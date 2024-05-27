@@ -7,6 +7,10 @@ sys.path.append("src")
 from Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
 from Model.TablesEmployer import Employerinput
 import Model.TablesEmployer as Temployer
+WorkersIncomeData.Droptable()
+WorkersIncomeData.CreateTable()
+WorkersoutputsData.Droptable()
+WorkersoutputsData.CreateTable()
 
 # Definir la clase NuevoEmpleado
 
