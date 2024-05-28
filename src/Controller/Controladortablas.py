@@ -13,12 +13,15 @@ model_dir = os.path.join(project_dir, "Model")
 # Agregar la ruta del directorio principal del proyecto y del modelo al sys.path
 sys.path.append(project_dir)
 sys.path.append(model_dir)
+sys.path.append("C:/Users/ACER/liquidador_nomina")
+sys.path.append("./src")
+
 
 # Importaciones
-from Model.MonthlyPaymentLogic import *
-import Model.MonthlyPaymentLogic as mp
-import Model.TablesEmployer as Temployer
-import Model.securitydb as st
+from src.Model.MonthlyPaymentLogic import *
+import src.Model.MonthlyPaymentLogic as mp
+import src.Model.TablesEmployer as Temployer
+import src.Model.securitydb as st
 
 
 class WorkersIncomeData:

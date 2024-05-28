@@ -12,6 +12,7 @@ from src.view_web import vista_usuarios
 # la configuración que queremos para nuestra aplicación
 app = Flask(__name__)     
 
+app.secret_key = 'Cristiano_Ronaldo_Dos_Santos_Aveiro'
 app.register_blueprint(vista_usuarios.blueprint )
 
 

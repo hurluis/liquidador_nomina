@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Usuario</title>
+    <link rel="stylesheet" href="static/css/style2.css">
 </head>
 <body>
     <h1>Buscar Usuario</h1>
-    <!-- Aquí puedes agregar un formulario para buscar usuarios -->
-    <form action="/buscar_usuario" method="POST">
-        <!-- Campos del formulario -->
-        <!-- Por ejemplo: -->
-        <label for="buscar_nombre">Buscar por Nombre:</label>
-        <input type="text" id="buscar_nombre" name="buscar_nombre" required><br><br>
-
+    <form action="/buscar_usuario_result" method="get">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula">
         <button type="submit">Buscar</button>
     </form>
 </body>

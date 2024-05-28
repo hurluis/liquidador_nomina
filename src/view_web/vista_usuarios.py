@@ -1,17 +1,20 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, Blueprint
-
-blueprint = Blueprint("vista_usuarios", __name__, "templates")
-
 import sys
-sys.path.append("src")
-from Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
-from Model.TablesEmployer import Employerinput
-import Model.TablesEmployer as Temployer
+sys.path.append("C:/Users/ACER/liquidador_nomina")
+sys.path.append("./src")
+from src.Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
+from src.Model.TablesEmployer import Employerinput
+import src.Model.TablesEmployer as Temployer
+import pandas as pd
 
-# Definir la clase NuevoEmpleado
+app = Flask(__name__)
+blueprint = Blueprint("vista_usuarios", __name__, template_folder="templates")
 
+WorkersIncomeData.Droptable()
+WorkersIncomeData.CreateTable()
+WorkersoutputsData.Droptable()
+WorkersoutputsData.CreateTable()
 
-# Definir las rutas y las funciones asociadas
 @blueprint.route("/")
 def home():
     return render_template("inicio.html")
@@ -22,33 +25,87 @@ def nuevo():
 
 @blueprint.route("/crear_usuario")
 def crear_usuario():
+    nuevo_empleado = Employerinput(
+        name=request.args["nombre"], 
+        id=request.args["cedula"], 
+        basic_salary=float(request.args["salario"]), 
+        monthly_worked_days=int(request.args["Días_Trabajados"]), 
+        days_leave=int(request.args["Días_Libres"]), 
+        transportation_allowance=float(request.args["Auxilio_Trasporte"]),
+        daytime_overtime_hours=float(request.args["Horas_diurnas_extra"]), 
+        nighttime_overtime_hours=float(request.args["Horas_nocturnas_extra"]), 
+        daytime_holiday_overtime_hours=float(request.args["Horas_diurnas_extra_festivo"]),
+        nighttime_holiday_overtime_hours=float(request.args["Horas_nocturnas_extra_festivo"]), 
+        sick_leave_days=int(request.args["Días_enfermedad"]), 
+        health_contribution_percentage=float(request.args["Porcentaje_seguro_salud"]),
+        pension_contribution_percentage=float(request.args["Porcentaje_retiro"]), 
+        solidarity_pension_fund_contribution_percentage=float(request.args["percentage_retirement_fund"])
+    )
 
-    # Crear una instancia de NuevoEmpleado con los datos del formulario
-    nuevo_empleado = Employerinput(name=request.args["nombre"], id=request.args["cedula"], basic_salary=request.args["salario"], monthly_worked_days=request.args["Días_Trabajados"], days_leave=request.args["Días_Libres"], transportation_allowance=request.args["Auxilio_Trasporte"],
-                daytime_overtime_hours=request.args["Horas_diurnas_extra"], nighttime_overtime_hours=request.args["Horas_nocturnas_extra"], daytime_holiday_overtime_hours=request.args["Horas_diurnas_extra_festivo"],
-                nighttime_holiday_overtime_hours=request.args["Horas_nocturnas_extra_festivo"], sick_leave_days=request.args["Días_enfermedad"], health_contribution_percentage=request.args["Porcentaje_seguro_salud"],
-                pension_contribution_percentage=request.args["Porcentaje_retiro"], solidarity_pension_fund_contribution_percentage=request.args["percentage_retirement_fund"])
-
-    # Insertar el nuevo empleado en la base de datos
     WorkersIncomeData.Insert(nuevo_empleado)
+    return render_template("resultado.html", user=nuevo_empleado, mensaje="Usuario insertado exitosamente!")
 
-        # Redirigir al usuario a la página de resultado después de insertar los datos
-    return render_template("resultado.html", user=nuevo_empleado, mensaje= "Usuario insertado exitosamente!")
-
-
-
-@blueprint.route("/buscar_usuario")
+@blueprint.route("/buscar-usuario")
 def buscar_usuario():
-    # Aquí podrías manejar la lógica para buscar un usuario
     return render_template("buscar_usuario.html")
 
-@blueprint.route("/actualizar_usuario")
+@blueprint.route("/buscar_usuario_result", methods=["GET"])
+def buscar_usuario_result():
+    nombre = request.args["nombre"]
+    cedula = request.args["cedula"]
+    trabajador = WorkersIncomeData.QueryWorker(nombre, cedula)
+    if trabajador:
+        return render_template("resultado.html", user=trabajador, mensaje="Trabajador encontrado:")
+    else:
+        return render_template("resultado.html", mensaje="No se encontró ningún trabajador con el nombre y la cédula proporcionados.")
+
+@blueprint.route("/actualizar-usuario")
 def modificar_usuario():
-    # Aquí podrías manejar la lógica para modificar un usuario
     return render_template("actualizar_usuario.html")
 
-@blueprint.route("/eliminar_usuario")
+@blueprint.route("/actualizar_usuario_result", methods=["POST"])
+def actualizar_usuario_result():
+    nombre = request.form["nombre"]
+    cedula = request.form["cedula"]
+    columna = request.form["columna"]
+    valor = request.form["valor"]
+
+    try:
+        if columna in ["basic_salary", "transportation_allowance", "daytime_overtime_hours", "nighttime_overtime_hours",
+                       "daytime_holiday_overtime_hours", "nighttime_holiday_overtime_hours", "health_contribution_percentage",
+                       "pension_contribution_percentage", "solidarity_pension_fund_contribution_percentage"]:
+            valor = float(valor)
+        else:
+            valor = int(valor)
+        
+        WorkersIncomeData.Update(nombre, cedula, KEYUPDATE=columna, VALUEUPDATE=valor)
+        mensaje = "Información del trabajador actualizada exitosamente!"
+        return render_template("resultado.html", mensaje=mensaje)
+    except Temployer.not_exist as e:
+        mensaje = f"Error al actualizar: {str(e)}"
+        return render_template("resultado.html", mensaje=mensaje)
+    except Exception as e:
+        mensaje = f"Error inesperado: {str(e)}"
+        return render_template("resultado.html", mensaje=mensaje)
+
+@blueprint.route("/eliminar-usuario")
 def eliminar_usuario():
-    # Aquí podrías manejar la lógica para eliminar un usuario
     return render_template("eliminar_usuario.html")
 
+@blueprint.route("/eliminar_usuario_result", methods=["POST"])
+def eliminar_usuario_result():
+    nombre = request.form["nombre"]
+    cedula = request.form["cedula"]
+
+    trabajador = WorkersIncomeData.QueryWorker(nombre, cedula)
+    if trabajador:
+        WorkersIncomeData.DeleteWorker(nombre, cedula)
+        return render_template("resultado.html", mensaje="Trabajador eliminado exitosamente!")
+    else:
+        return render_template("resultado.html", mensaje="No se encontró ningún trabajador con el nombre y la cédula proporcionados.")
+
+
+app.register_blueprint(blueprint, url_prefix="/")
+
+if __name__ == "__main__":
+    app.run(debug=True)

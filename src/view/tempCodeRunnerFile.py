@@ -1,6 +1,6 @@
 import sys
 
-sys.path.append("liquidador_nomina/src")
+sys.path.append("C:/Users/ACER/liquidador_nomina")
 sys.path.append("./src")
-from Model.MonthlyPaymentLogic import *
-import Model.MonthlyPaymentLogic as mp
+from src.Model.MonthlyPaymentLogic import *
+import src.Model.MonthlyPaymentLogic as mp
