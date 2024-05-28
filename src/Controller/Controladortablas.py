@@ -127,8 +127,10 @@ class WorkersIncomeData:
                         FROM Employerinput
                         WHERE NAME = '{NAME}' AND id = '{ID}';""")
         fila = cursor.fetchone()
-        if fila is not None: 
-            result = Temployer.Employerinput(name=fila[0],
+        if fila is None:
+            return None
+        else:
+            result = Temployer.Employerinput(name=fila[0], 
                                             id=fila[1],
                                             basic_salary=fila[2],
                                             monthly_worked_days=fila[3],
@@ -143,11 +145,8 @@ class WorkersIncomeData:
                                             pension_contribution_percentage=fila[12],
                                             solidarity_pension_fund_contribution_percentage=fila[13])
             return result
-        else:
-            return None  
-
-
-
+        
+        
 class  WorkersoutputsData():
     
     def GetCursor():
@@ -241,7 +240,10 @@ class  WorkersoutputsData():
                             FROM Employeroutput
                             WHERE NAME = '{NAME}' AND id = '{ID}';""")
             fila = cursor.fetchone()
-            Temployer.Employeroutput.employernotfound(fila)
+            if fila is None:
+                return None
+            else:
+                Temployer.Employeroutput.employernotfound(fila)
             result = Temployer.Employeroutput(name=fila[0], 
                                                 id=fila[1],
                                                 basic_salary=fila[2],

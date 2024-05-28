@@ -3,8 +3,10 @@ import sys
 sys.path.append("C:/Users/ACER/liquidador_nomina")
 sys.path.append("./src")
 from src.Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
-from src.Model.TablesEmployer import Employerinput
+from src.Model.TablesEmployer import Employerinput, Employeroutput as Temployer,Employeroutput
 import src.Model.TablesEmployer as Temployer
+import src.Model.MonthlyPaymentLogic as mp
+from src.Model.MonthlyPaymentLogic import calculate_settlement, InvalidRetirementFundPercentageError
 import pandas as pd
 
 app = Flask(__name__)
@@ -103,6 +105,44 @@ def eliminar_usuario_result():
         return render_template("resultado.html", mensaje="Trabajador eliminado exitosamente!")
     else:
         return render_template("resultado.html", mensaje="No se encontró ningún trabajador con el nombre y la cédula proporcionados.")
+    
+@blueprint.route("/calcular-liquidacion", methods=["GET"])
+def calcular_liquidacion():
+    return render_template("calcular_liquidacion.html")
+
+@blueprint.route("/mostrar_resultado_liquidacion", methods=["POST"])
+def mostrar_resultado_liquidacion():
+    nombre = request.form["nombre"]
+    cedula = request.form["cedula"]
+    
+    try:
+        findemployer = WorkersoutputsData.QueryWorker(nombre, cedula)
+        if findemployer:
+            return render_template("resultado_liquidacion.html",
+                                  nombre=findemployer.name,
+                                  cedula=findemployer.id,
+                                  salario_basico=findemployer.basic_salary,
+                                  dias_trabajados=findemployer.workdays,
+                                  dias_licencia_enfermedad=findemployer.sick_leave,
+                                  subsidio_transporte=findemployer.transportation_aid,
+                                  horas_extra_diurnas=findemployer.dayshift_extra_hours,
+                                  horas_extra_nocturnas=findemployer.nightshift_extra_hours,
+                                  horas_extra_diurnas_festivos=findemployer.dayshift_extra_hours_holidays,
+                                  horas_extra_nocturnas_festivos=findemployer.nightshift_extra_hours_holidays,
+                                  dias_licencia=findemployer.leave_days,
+                                  porcentaje_seguro_salud=findemployer.percentage_health_insurance,
+                                  porcentaje_aporte_pensiones=findemployer.percentage_retirement_insurance,
+                                  porcentaje_aporte_fondo_retiro=findemployer.percentage_retirement_fund,
+                                  total_a_pagar=findemployer.amounttopay)
+        else:
+            return render_template("resultado.html", mensaje="No se encontró ningún trabajador con el nombre y la cédula proporcionados.")
+    except Temployer.not_found as e:
+        return render_template("resultado.html", mensaje=str(e))
+    except Exception as e:
+        return render_template("resultado.html", mensaje=str(e))
+
+
+
 
 
 app.register_blueprint(blueprint, url_prefix="/")

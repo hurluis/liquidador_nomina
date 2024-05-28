@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Resultado de la Liquidación</h1>
+{% if nombre and cedula %}
+<table>
+    <tr>
+        <td><b>Nombre:</b></td>
+        <td>{{ nombre }}</td>
+    </tr>
+    <tr>
+        <td><b>Cédula:</b></td>
+        <td>{{ cedula }}</td>
+    </tr>
+    <tr>
+        <td><b>Salario Básico:</b></td>
+        <td>{{ salario_basico }}</td>
+    </tr>
+    <tr>
+        <td><b>Días Trabajados:</b></td>
+        <td>{{ dias_trabajados }}</td>
+    </tr>
+    <tr>
+        <td><b>Días de Licencia por Enfermedad:</b></td>
+        <td>{{ dias_licencia_enfermedad }}</td>
+    </tr>
+    <tr>
+        <td><b>Subsidio de Transporte:</b></td>
+        <td>{{ subsidio_transporte }}</td>
+    </tr>
+    <tr>
+        <td><b>Horas Extra Diurnas:</b></td>
+        <td>{{ horas_extra_diurnas }}</td>
+    </tr>
+    <tr>
+        <td><b>Horas Extra Nocturnas:</b></td>
+        <td>{{ horas_extra_nocturnas }}</td>
+    </tr>
+    <tr>
+        <td><b>Horas Extra Diurnas en Festivos:</b></td>
+        <td>{{ horas_extra_diurnas_festivos }}</td>
+    </tr>
+    <tr>
+        <td><b>Horas Extra Nocturnas en Festivos:</b></td>
+        <td>{{ horas_extra_nocturnas_festivos }}</td>
+    </tr>
+    <tr>
+        <td><b>Días de Licencia:</b></td>
+        <td>{{ dias_licencia }}</td>
+    </tr>
+    <tr>
+        <td><b>Porcentaje de Seguro de Salud:</b></td>
+        <td>{{ porcentaje_seguro_salud }}</td>
+    </tr>
+    <tr>
+        <td><b>Porcentaje de Aporte a Pensiones:</b></td>
+        <td>{{ porcentaje_aporte_pensiones }}</td>
+    </tr>
+    <tr>
+        <td><b>Porcentaje de Aporte al Fondo de Retiro:</b></td>
+        <td>{{ porcentaje_aporte_fondo_retiro }}</td>
+    </tr>
+    <tr>
+        <td><b>Valor a Pagar al Trabajador:</b></td>
+        <td>{{ total_a_pagar }}</td>
+    </tr>
+</table>
+{% else %}
+<p>{{ mensaje }}</p>
+{% endif %}
+<a class="button" href="{{ url_for('vista_usuarios.home') }}"><b>Volver al Menú</b></a>
+{% endblock %}
