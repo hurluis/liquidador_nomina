@@ -29,19 +29,19 @@
         <td>{{ subsidio_transporte }}</td>
     </tr>
     <tr>
-        <td><b>Horas Extra Diurnas:</b></td>
+        <td><b>Horas Extras Diurnas:</b></td>
         <td>{{ horas_extra_diurnas }}</td>
     </tr>
     <tr>
-        <td><b>Horas Extra Nocturnas:</b></td>
+        <td><b>Horas Extras Nocturnas:</b></td>
         <td>{{ horas_extra_nocturnas }}</td>
     </tr>
     <tr>
-        <td><b>Horas Extra Diurnas en Festivos:</b></td>
+        <td><b>Horas Extras Diurnas Festivos:</b></td>
         <td>{{ horas_extra_diurnas_festivos }}</td>
     </tr>
     <tr>
-        <td><b>Horas Extra Nocturnas en Festivos:</b></td>
+        <td><b>Horas Extras Nocturnas Festivos:</b></td>
         <td>{{ horas_extra_nocturnas_festivos }}</td>
     </tr>
     <tr>
@@ -61,12 +61,13 @@
         <td>{{ porcentaje_aporte_fondo_retiro }}</td>
     </tr>
     <tr>
-        <td><b>Valor a Pagar al Trabajador:</b></td>
+        <td><b>Total a Pagar:</b></td>
         <td>{{ total_a_pagar }}</td>
     </tr>
 </table>
+<a class="button" href="/"><b>Presiona para volver al menú</b></a>
 {% else %}
 <p>{{ mensaje }}</p>
 {% endif %}
-<a class="button" href="{{ url_for('vista_usuarios.home') }}"><b>Volver al Menú</b></a>
 {% endblock %}
+

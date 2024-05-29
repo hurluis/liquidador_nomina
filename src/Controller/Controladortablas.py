@@ -123,10 +123,11 @@ class WorkersIncomeData:
     def QueryWorker(NAME, ID):
         """ Query the data of a worker from the 'Employerinput' table based on the provided name and ID. """
         cursor = WorkersIncomeData.GetCursor()
-        cursor.execute(f"""SELECT *
-                        FROM Employerinput
-                        WHERE NAME = '{NAME}' AND id = '{ID}';""")
+        cursor.execute(f"""SELECT * FROM Employerinput WHERE NAME = '{NAME}' AND id = '{ID}';""")
         fila = cursor.fetchone()
+
+# Ahora la variable 'fila' contiene el resultado de la consulta
+
         if fila is None:
             return None
         else:
@@ -233,17 +234,16 @@ class  WorkersoutputsData():
             cursor.connection.commit()
 
     def QueryWorker(NAME, ID):
-        """ Query the data of a worker from the 'Employeroutput' table based on the provided name and ID. """
-        try:
-            cursor = WorkersIncomeData.GetCursor()
-            cursor.execute(f"""SELECT *
-                            FROM Employeroutput
-                            WHERE NAME = '{NAME}' AND id = '{ID}';""")
-            fila = cursor.fetchone()
-            if fila is None:
-                return None
-            else:
-                Temployer.Employeroutput.employernotfound(fila)
+        """ Query the data of a worker from the 'Employerinput' table based on the provided name and ID. """
+        cursor = WorkersIncomeData.GetCursor()
+        cursor.execute(f"""SELECT * FROM Employerinput WHERE NAME = '{NAME}' AND id = '{ID}';""")
+        fila = cursor.fetchone()
+
+            # Ahora la variable 'fila' contiene el resultado de la consulta
+
+        if fila is None:
+            return None
+        else:
             result = Temployer.Employeroutput(name=fila[0], 
                                                 id=fila[1],
                                                 basic_salary=fila[2],
@@ -262,8 +262,7 @@ class  WorkersoutputsData():
                                                 deducido=fila[15],
                                                 amounttopay=fila[16])
             return result
-        except Temployer.not_found as ds:
-            pass
+
 
 
 f"""
@@ -283,5 +282,6 @@ f"""
 13. percentage_retirement_fund
 14. devengado
 15. deducido
-16. amounttopay
+16. amounttopay
 """
+

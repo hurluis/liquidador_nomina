@@ -6,16 +6,12 @@ from src.Controller.Controladortablas import WorkersIncomeData, WorkersoutputsDa
 from src.Model.TablesEmployer import Employerinput, Employeroutput as Temployer,Employeroutput
 import src.Model.TablesEmployer as Temployer
 import src.Model.MonthlyPaymentLogic as mp
-from src.Model.MonthlyPaymentLogic import calculate_settlement, InvalidRetirementFundPercentageError
+from src.Model.MonthlyPaymentLogic import calculate_settlement, InvalidRetirementFundPercentageError, SettlementParameters
 import pandas as pd
 
 app = Flask(__name__)
 blueprint = Blueprint("vista_usuarios", __name__, template_folder="templates")
 
-WorkersIncomeData.Droptable()
-WorkersIncomeData.CreateTable()
-WorkersoutputsData.Droptable()
-WorkersoutputsData.CreateTable()
 
 @blueprint.route("/")
 def home():
@@ -116,32 +112,49 @@ def mostrar_resultado_liquidacion():
     cedula = request.form["cedula"]
     
     try:
-        findemployer = WorkersoutputsData.QueryWorker(nombre, cedula)
-        if findemployer:
-            return render_template("resultado_liquidacion.html",
-                                  nombre=findemployer.name,
-                                  cedula=findemployer.id,
-                                  salario_basico=findemployer.basic_salary,
-                                  dias_trabajados=findemployer.workdays,
-                                  dias_licencia_enfermedad=findemployer.sick_leave,
-                                  subsidio_transporte=findemployer.transportation_aid,
-                                  horas_extra_diurnas=findemployer.dayshift_extra_hours,
-                                  horas_extra_nocturnas=findemployer.nightshift_extra_hours,
-                                  horas_extra_diurnas_festivos=findemployer.dayshift_extra_hours_holidays,
-                                  horas_extra_nocturnas_festivos=findemployer.nightshift_extra_hours_holidays,
-                                  dias_licencia=findemployer.leave_days,
-                                  porcentaje_seguro_salud=findemployer.percentage_health_insurance,
-                                  porcentaje_aporte_pensiones=findemployer.percentage_retirement_insurance,
-                                  porcentaje_aporte_fondo_retiro=findemployer.percentage_retirement_fund,
-                                  total_a_pagar=findemployer.amounttopay)
+        trabajador = WorkersIncomeData.QueryWorker(nombre, cedula)
+        if trabajador:
+            # Lógica de cálculo de liquidación basada en los datos del trabajador
+            settlement_params = SettlementParameters(
+                basic_salary=trabajador.basic_salary,
+                workdays=trabajador.monthly_worked_days,
+                sick_leave=trabajador.sick_leave_days,
+                transportation_aid=trabajador.transportation_allowance,
+                dayshift_extra_hours=trabajador.daytime_overtime_hours,
+                nightshift_extra_hours=trabajador.nighttime_overtime_hours,
+                dayshift_extra_hours_holidays=trabajador.daytime_holiday_overtime_hours,
+                nightshift_extra_hours_holidays=trabajador.nighttime_holiday_overtime_hours,
+                leave_days=trabajador.days_leave,
+                percentage_health_insurance=trabajador.health_contribution_percentage / 100,
+                percentage_retirement_insurance=trabajador.pension_contribution_percentage / 100,
+                percentage_retirement_fund=trabajador.solidarity_pension_fund_contribution_percentage / 100
+            )
+            liquidacion = calculate_settlement(settlement_params)
+            
+            return render_template(
+                "resultado_liquidacion.html",
+                nombre=trabajador.name,
+                cedula=trabajador.id,
+                salario_basico=trabajador.basic_salary,
+                dias_trabajados=trabajador.monthly_worked_days,
+                dias_licencia_enfermedad=trabajador.sick_leave_days,
+                subsidio_transporte=trabajador.transportation_allowance,
+                horas_extra_diurnas=trabajador.daytime_overtime_hours,
+                horas_extra_nocturnas=trabajador.nighttime_overtime_hours,
+                horas_extra_diurnas_festivos=trabajador.daytime_holiday_overtime_hours,
+                horas_extra_nocturnas_festivos=trabajador.nighttime_holiday_overtime_hours,
+                dias_licencia=trabajador.days_leave,
+                porcentaje_seguro_salud=trabajador.health_contribution_percentage,
+                porcentaje_aporte_pensiones=trabajador.pension_contribution_percentage,
+                porcentaje_aporte_fondo_retiro=trabajador.solidarity_pension_fund_contribution_percentage,
+                total_a_pagar=liquidacion
+            )
         else:
             return render_template("resultado.html", mensaje="No se encontró ningún trabajador con el nombre y la cédula proporcionados.")
     except Temployer.not_found as e:
         return render_template("resultado.html", mensaje=str(e))
     except Exception as e:
         return render_template("resultado.html", mensaje=str(e))
-
-
 
 
 
