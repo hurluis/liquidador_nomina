@@ -159,7 +159,21 @@ def mostrar_resultado_liquidacion():
         return render_template("resultado.html", mensaje=str(e))
     except Exception as e:
         return render_template("resultado.html", mensaje=str(e))
+    
 
+@blueprint.route('/description')
+def description():
+    return render_template('description.html', 
+                           MINIMUM_WAGE=mp.MINIMUM_WAGE,
+                           UVT=mp.UVT,
+                           EXTRA_HOUR_DAYSHIFT=mp.EXTRA_HOUR_DAYSHIFT,
+                           EXTRA_HOUR_NIGHTSHIFT=mp.EXTRA_HOUR_NIGHTSHIFT,
+                           EXTRA_HOUR_DAYSHIFT_HOLIDAYS=mp.EXTRA_HOUR_DAYSHIFT_HOLIDAYS,
+                           EXTRA_HOUR_NIGHTSHIFT_HOLIDAYS=mp.EXTRA_HOUR_NIGHTSHIFT_HOLIDAYS,
+                           MONTH_DAYS=mp.MONTH_DAYS,
+                           MONTH_HOURS=mp.MONTH_HOURS,
+                           PERCENTAGE_HEALTH_INSURANCE=mp.PERCENTAGE_HEALTH_INSURANCE * 100,
+                           PERCENTAGE_RETIREMENT_FUND=mp.PERCENTAGE_RETIREMENT_FUND * 100)
 
 
 app.register_blueprint(blueprint, url_prefix="/")
