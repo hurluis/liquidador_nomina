@@ -76,8 +76,12 @@ def actualizar_usuario_result():
         else:
             valor = int(valor)
         
-        WorkersIncomeData.Update(nombre, cedula, KEYUPDATE=columna, VALUEUPDATE=valor)
-        mensaje = "Información del trabajador actualizada exitosamente!"
+        worker = WorkersIncomeData.QueryWorker(nombre, cedula)
+        if worker:
+            WorkersIncomeData.Update(nombre, cedula, KEYUPDATE=columna, VALUEUPDATE=valor)
+            mensaje = "Información del trabajador actualizada exitosamente!"
+        else:
+            mensaje = "No se encontró ningún trabajador con el nombre y la cédula proporcionados."
         return render_template("resultado.html", mensaje=mensaje)
     except Temployer.not_exist as e:
         mensaje = f"Error al actualizar: {str(e)}"
@@ -160,5 +164,3 @@ def mostrar_resultado_liquidacion():
 
 app.register_blueprint(blueprint, url_prefix="/")
 
-if __name__ == "__main__":
-    app.run(debug=True)
