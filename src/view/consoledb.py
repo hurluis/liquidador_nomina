@@ -1,13 +1,24 @@
-import unittest
 import sys
-sys.path.append("C:/Users/ACER/liquidador_nomina")
+import os
+# Obtener la ruta del directorio actual del script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Obtener la ruta del directorio principal del proyecto
+project_dir = os.path.abspath(os.path.join(current_dir, ".."))
+# Obtener la ruta del directorio del modelo
+model_dir = os.path.join(project_dir, "Model")
+
+
+# Agregar la ruta del directorio principal del proyecto y del modelo al sys.path
+sys.path.append(project_dir)
+sys.path.append(model_dir)
 sys.path.append("./src")
-from src.Model.MonthlyPaymentLogic import *
-import src.Model.MonthlyPaymentLogic as mp
-from src.Controller.Controladortablas import WorkersIncomeData
-from src.Controller.Controladortablas import WorkersoutputsData
-import src.Model.TablesEmployer as Temployer
+from Model.MonthlyPaymentLogic import *
+import Model.MonthlyPaymentLogic as mp
+from Controller.Controladortablas import WorkersIncomeData
+from Controller.Controladortablas import WorkersoutputsData
+import Model.TablesEmployer as Temployer
 import pandas as pd
+
 
 print(f"""Bienvenido a este calculador de nómina, el cual va a tener la posibilidad de conectarse a una base de datos.
            Dentro de las siguientes características que va a tener el programa están las siguientes: primero, puedes construir 

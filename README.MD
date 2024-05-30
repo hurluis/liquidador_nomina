@@ -31,9 +31,12 @@ La instalación se puede llevar a cabo mediante el siguiente código en la termi
 * **Instalación de psycopg2**: Esa es una librería de Python que proporciona una interfaz para interactuar con bases de datos PostgreSQL.
 La instalación se puede llevar a cabo mediante el siguiente código en la terminal:  `pip install psycopg2` 
 
+* **Instalación de flask**: Esa es una librería de Python que proporciona la interacción entre una aplicación web hecha en PYTHON y unos templates hechos en HTML, para conectar ambos y hacer funcionar la app web.
+La instalación se puede llevar a cabo mediante el siguiente código en la terminal:  `pip install flask` 
+
 # ¿Cómo está hecho?
 
-El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 6 archivos, los cuales son:
+El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 24 archivos, los cuales son:
 
 1. MonthlyPaymentLogic.py
 2. MonthlyPaymentTest.py
@@ -46,6 +49,18 @@ El proyecto presenta una arquitectura modular y bien estructurada, diseñada par
 9. securitydb.py
 10. DatabaseTest.py
 11. consoledb.py
+12. app.py
+13. vista_usuarios.py
+15. crear_usuario.html
+16. actualizar_usuario.html
+17. base.html
+18. buscar_usuario.html
+19. calcular_liquidacion.html
+20. datos_usuario.html
+21. description.html
+22. style.css
+23. style2.css
+24. style3.css
 
 La estructuras por carpetas es la siguiente
 
@@ -60,6 +75,7 @@ La estructuras por carpetas es la siguiente
    - **TablesEmployer.py**: Definición de las tablas del empleador.
    - **securitydb.py**: Manejo de la seguridad de la base de datos.
    - **consoledb.py**: Interfaz de consola para la base de datos.
+   - **vista_usuarios.py**: Archivo que contiene los blueprints de de la interfaz web.
 
 3. **test**:
    - **MonthlyPaymentTest.py**: Pruebas unitarias para casos normales.
@@ -67,9 +83,28 @@ La estructuras por carpetas es la siguiente
    - **ErrorCaseTest.py**: Pruebas unitarias para casos de error.
    - **DatabaseTest.py**: Pruebas unitarias para la base de datos.
 
-4. **.gitignore**: Archivos y carpetas a ignorar por Git.
-5. **LICENSE**: Licencia MIT del proyecto.
-6. **README.md**: Documentación del proyecto, explicación del propósito, instalación y ejecución.
+4. **static**: 
+   - **style.css**: Decoradores de la interfaz web.
+   - **style2.css**: Decoradores de la interfaz web.
+   - **style3.css**: Decoradores de la interfaz web.
+
+5. **templates (archivos html para la interfaz web)**: 
+   - **crear_usuario.html**
+   - **actualizar_usuario.html**
+   - **base.html** 
+   - **buscar_usuario.html**
+   -**calcular_liquidacion.html**
+   - **datos_usuario.html**
+   - **description.html**
+   - **eliminar_usuario**
+   - **inicio**
+   - **resultado_liquidacion**
+   - **resultado**
+
+6. **app.py**: Archivos y carpetas a ignorar por Git.
+7. **.gitignore**: Archivos y carpetas a ignorar por Git.
+8. **LICENSE**: Licencia MIT del proyecto.
+9. **README.md**: Documentación del proyecto, explicación del propósito, instalación y ejecución.
 
 
 El código utiliza la libreria estándar de Python, `math`, que proporciona funciones matemáticas básicas, como la función `trunc()` utilizada para truncar valores decimales. Esta biblioteca es fundamental para realizar cálculos precisos dentro del programa, como calcular porcentajes o redondear valores según sea necesario.

@@ -1,12 +1,25 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, Blueprint
 import sys
-sys.path.append("C:/Users/ACER/liquidador_nomina")
+import os
+ 
+# Obtener la ruta del directorio actual del script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Obtener la ruta del directorio principal del proyecto
+project_dir = os.path.abspath(os.path.join(current_dir, ".."))
+# Obtener la ruta del directorio del modelo
+model_dir = os.path.join(project_dir, "Model")
+
+
+# Agregar la ruta del directorio principal del proyecto y del modelo al sys.path
+sys.path.append(project_dir)
+sys.path.append(model_dir)
 sys.path.append("./src")
-from src.Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
-from src.Model.TablesEmployer import Employerinput, Employeroutput as Temployer,Employeroutput
-import src.Model.TablesEmployer as Temployer
-import src.Model.MonthlyPaymentLogic as mp
-from src.Model.MonthlyPaymentLogic import calculate_settlement, InvalidRetirementFundPercentageError, SettlementParameters
+
+from Controller.Controladortablas import WorkersIncomeData, WorkersoutputsData
+from Model.TablesEmployer import Employerinput, Employeroutput as Temployer,Employeroutput
+import Model.TablesEmployer as Temployer
+import Model.MonthlyPaymentLogic as mp
+from Model.MonthlyPaymentLogic import calculate_settlement, InvalidRetirementFundPercentageError, SettlementParameters
 import pandas as pd
 
 app = Flask(__name__)

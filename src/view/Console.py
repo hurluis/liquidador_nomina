@@ -1,12 +1,17 @@
 import sys
+import os
 
-
+# Obtenemos la ruta del directorio actual del script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Obtenemos la ruta del directorio principal del proyecto
+project_dir = os.path.abspath(os.path.join(current_dir, ".."))
+# Agregamos el directorio principal del proyecto al sys.path
+sys.path.append(project_dir)
 # Agregar el directorio 'src' al path para permitir importaciones relativas
-sys.path.append("C:/Users/ACER/liquidador_nomina")
 sys.path.append("./src")
 
-from src.Model.MonthlyPaymentLogic import *
-import src.Model.MonthlyPaymentLogic as mp
+from Model.MonthlyPaymentLogic import *
+import Model.MonthlyPaymentLogic as mp
 
 print(f"""
 El propósito del programa es calcular el salario mensual de un empleado 
