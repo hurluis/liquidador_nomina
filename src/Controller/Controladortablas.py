@@ -234,9 +234,9 @@ class  WorkersoutputsData():
             cursor.connection.commit()
 
     def QueryWorker(NAME, ID):
-        """ Query the data of a worker from the 'Employerinput' table based on the provided name and ID. """
+        """ Query the data of a worker from the 'Employeroutput' table based on the provided name and ID. """
         cursor = WorkersIncomeData.GetCursor()
-        cursor.execute(f"""SELECT * FROM Employerinput WHERE NAME = '{NAME}' AND id = '{ID}';""")
+        cursor.execute(f"""SELECT * FROM Employeroutput WHERE NAME = '{NAME}' AND id = '{ID}';""")
         fila = cursor.fetchone()
 
             # Ahora la variable 'fila' contiene el resultado de la consulta
@@ -244,6 +244,7 @@ class  WorkersoutputsData():
         if fila is None:
             return None
         else:
+            Temployer.Employeroutput.employernotfound(fila)
             result = Temployer.Employeroutput(name=fila[0], 
                                                 id=fila[1],
                                                 basic_salary=fila[2],
@@ -284,4 +285,3 @@ f"""
 15. deducido
 16. amounttopay
 """
-
