@@ -1,7 +1,7 @@
-# Do not expose your Neon credentials to the browser
+#Ingrese sus datos de la base de datos
 
-PGHOST='ep-icy-frost-a44ohbcz.us-east-1.aws.neon.tech'
-PGDATABASE='Interfaz'
-PGUSER='Interfaz_owner'
-PGPASSWORD='UyRJM75DXrCb'
+PGHOST=''
+PGDATABASE=''
+PGUSER=''
+PGPASSWORD=''
 PGPORT=5432
