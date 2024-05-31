@@ -36,7 +36,7 @@ La instalación se puede llevar a cabo mediante el siguiente código en la termi
 
 # ¿Cómo está hecho?
 
-El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 24 archivos, los cuales son:
+El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 29 archivos, los cuales son:
 
 1. MonthlyPaymentLogic.py
 2. MonthlyPaymentTest.py
@@ -51,21 +51,16 @@ El proyecto presenta una arquitectura modular y bien estructurada, diseñada par
 11. consoledb.py
 12. app.py
 13. vista_usuarios.py
-14. crear_usuario.html
-15. actualizar_usuario.html
-16. base.html
-17. buscar_usuario.html
-18. buscar_usuario_result.html
+15. crear_usuario.html
+16. actualizar_usuario.html
+17. base.html
+18. buscar_usuario.html
 19. calcular_liquidacion.html
-21. datos_usuario.html
-22. description.html
-23. eliminar_usuario.html
-24. inicio.html
-25. resultado_liquidacion.html
-26. resultado.html
-27. style.css
-28. style2.css
-29. style3.css
+20. datos_usuario.html
+21. description.html
+22. style.css
+23. style2.css
+24. style3.css
 
 La estructuras por carpetas es la siguiente
 
@@ -98,7 +93,6 @@ La estructuras por carpetas es la siguiente
    - **actualizar_usuario.html**
    - **base.html** 
    - **buscar_usuario.html**
-   - **buscar_usuario_result.html**
    -**calcular_liquidacion.html**
    - **datos_usuario.html**
    - **description.html**
@@ -216,7 +210,7 @@ En este archivo debe ingresar los datos de conexión a su base de datos, recuerd
 
 5) copie el link http que le arroja y ahora solo a disfrutar :D
 
-6) Si deseas devolverte usa `cd ..`
+6) Si deseas devolverte usa `cd..`
 
 
 
