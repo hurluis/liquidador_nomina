@@ -156,7 +156,7 @@ Dependiendo del caso de prueba se copia lo siguiente:
 
 2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
-3) Para poder ejecutar las pruebas se debe modificar el archivo `securitydb.py que se encuentra en ./liquidador_nomina/securitydb.py ` Este archivo debe
+3) Para poder ejecutar las pruebas se debe modificar el archivo `securitydb.py` que se encuentra en `./liquidador_nomina/securitydb.py ` Este archivo debe
 ser modificado usando un procesador de texto por consola como nano o usando el comando `notepad ./liquidador_nomina/securitydb.py `
 En este archivo debe ingresar los datos de conexión a su base de datos, recuerde que el parametro de PGPORT siempre debe ser 5432 **EN CASO DE NO FUNCIONARLE** podra poner estos parametros de conexión abriendo el archivo en un editor de código, y colocando los datos dentro de securitydb.py.
 
@@ -193,7 +193,7 @@ En este archivo debe ingresar los datos de conexión a su base de datos, recuerd
 
 2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
-3) Para poder ejecutar la interfaz de la data base se debe modificar el archivo `securitydb.py que se encuentra en ./liquidador_nomina/securitydb.py ` Este archivo debe
+3) Para poder ejecutar las pruebas se debe modificar el archivo `securitydb.py` que se encuentra en `./liquidador_nomina/securitydb.py ` Este archivo debe
 ser modificado usando un procesador de texto por consola como nano o usando el comando `notepad ./liquidador_nomina/securitydb.py `
 En este archivo debe ingresar los datos de conexión a su base de datos, recuerde que el parametro de PGPORT siempre debe ser 5432 **EN CASO DE NO FUNCIONARLE** podra poner estos parametros de conexión abriendo el archivo en un editor de código, y colocando los datos dentro de securitydb.py.
 
