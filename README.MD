@@ -36,7 +36,7 @@ La instalación se puede llevar a cabo mediante el siguiente código en la termi
 
 # ¿Cómo está hecho?
 
-El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 24 archivos, los cuales son:
+El proyecto presenta una arquitectura modular y bien estructurada, diseñada para calcular la nómina de los empleados de una empresa de manera eficiente y precisa. El programa cuenta con 29 archivos, los cuales son:
 
 1. MonthlyPaymentLogic.py
 2. MonthlyPaymentTest.py
