@@ -28,11 +28,14 @@ La instalación se puede llevar a cabo mediante el siguiente código en la termi
 
 * **Datos de entrada relevantes**: Al ejecutar el programa se necesitará tener acceso a los datos necesarios para proporcionar los parámetros requeridos por el programa, como el salario básico, los días laborables, los días de licencia médica, entre otros.
 
+* **Instalación de pandas**: Esa es una librería de Python que proporciona el manejo de datos en python. La instalación se puede llevar a cabo mediante el siguiente código en la terminal:  `pip install pandas`
+
 * **Instalación de psycopg2**: Esa es una librería de Python que proporciona una interfaz para interactuar con bases de datos PostgreSQL.
 La instalación se puede llevar a cabo mediante el siguiente código en la terminal:  `pip install psycopg2` 
 
 * **Instalación de flask**: Esa es una librería de Python que proporciona la interacción entre una aplicación web hecha en PYTHON y unos templates hechos en HTML, para conectar ambos y hacer funcionar la app web.
 La instalación se puede llevar a cabo mediante el siguiente código en la terminal:  `pip install flask` 
+
 
 # ¿Cómo está hecho?
 
