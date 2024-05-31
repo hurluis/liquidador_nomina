@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, Blueprint
 import sys
 import os
- 
+
+
 # Obtener la ruta del directorio actual del script
 current_dir = os.path.dirname(os.path.abspath(__file__))
 # Obtener la ruta del directorio principal del proyecto
@@ -21,6 +22,12 @@ import Model.TablesEmployer as Temployer
 import Model.MonthlyPaymentLogic as mp
 from Model.MonthlyPaymentLogic import calculate_settlement, InvalidRetirementFundPercentageError, SettlementParameters
 import pandas as pd
+
+WorkersIncomeData.Droptable()
+WorkersIncomeData.CreateTable()
+WorkersoutputsData.Droptable()
+WorkersoutputsData.CreateTable()
+
 
 app = Flask(__name__)
 blueprint = Blueprint("vista_usuarios", __name__, template_folder="templates")
@@ -66,9 +73,17 @@ def buscar_usuario_result():
     cedula = request.args["cedula"]
     trabajador = WorkersIncomeData.QueryWorker(nombre, cedula)
     if trabajador:
-        return render_template("resultado.html", user=trabajador, mensaje="Trabajador encontrado:")
+        return render_template(
+            "buscar_usuario_result.html",
+            user=trabajador,
+            mensaje="Trabajador encontrado:"
+        )
     else:
-        return render_template("resultado.html", mensaje="No se encontró ningún trabajador con el nombre y la cédula proporcionados.")
+        return render_template(
+            "buscar_usuario_result.html",
+            mensaje="No se encontró ningún trabajador con el nombre y la cédula proporcionados."
+        )
+
 
 @blueprint.route("/actualizar-usuario")
 def modificar_usuario():
@@ -190,4 +205,3 @@ def description():
 
 
 app.register_blueprint(blueprint, url_prefix="/")
-

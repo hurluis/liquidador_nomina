@@ -1,8 +1,8 @@
 # README
 
 ## Autores
+* Luis Miguel Giraldo  
 * Daniel Alzate Arias
-* Luis Miguel Giraldo
 
 # ¿Para qué sirve?
 
@@ -51,16 +51,21 @@ El proyecto presenta una arquitectura modular y bien estructurada, diseñada par
 11. consoledb.py
 12. app.py
 13. vista_usuarios.py
-15. crear_usuario.html
-16. actualizar_usuario.html
-17. base.html
-18. buscar_usuario.html
+14. crear_usuario.html
+15. actualizar_usuario.html
+16. base.html
+17. buscar_usuario.html
+18. buscar_usuario_result.html
 19. calcular_liquidacion.html
-20. datos_usuario.html
-21. description.html
-22. style.css
-23. style2.css
-24. style3.css
+21. datos_usuario.html
+22. description.html
+23. eliminar_usuario.html
+24. inicio.html
+25. resultado_liquidacion.html
+26. resultado.html
+27. style.css
+28. style2.css
+29. style3.css
 
 La estructuras por carpetas es la siguiente
 
@@ -93,6 +98,7 @@ La estructuras por carpetas es la siguiente
    - **actualizar_usuario.html**
    - **base.html** 
    - **buscar_usuario.html**
+   - **buscar_usuario_result.html**
    -**calcular_liquidacion.html**
    - **datos_usuario.html**
    - **description.html**
@@ -132,9 +138,7 @@ Por otro lado librerias necesarias para la ejecución del proyecto también son 
 # Como ejecutar las pruebas unitarias
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Ahora copia en la consola de bash `git clone https://github.com/hurluis/liquidador_nomina.git`
-
-3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
+2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
 Dependiendo del caso de prueba se copia lo siguiente:
 4) Casos normales: ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/test/MonthlyPaymentTest.py`
@@ -143,82 +147,76 @@ Dependiendo del caso de prueba se copia lo siguiente:
 
 6) Casos de error: ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/test/ErrorCaseTest.py`
 
-7) Si deseas devolverte usa `cd..`
+7) Si deseas devolverte usa `cd ..` para moverte entre las pruebas
 
 
 # Como ejecutar la pruebas de la base de datos
 
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Ahora copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
+2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
-3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
-
-4) Para poder ejecutar las pruebas se debe modificar el archivo `securitydb.py que se encuentra en ./liquidador_nomina/securitydb.py ` Este archivo debe
+3) Para poder ejecutar las pruebas se debe modificar el archivo `securitydb.py que se encuentra en ./liquidador_nomina/securitydb.py ` Este archivo debe
 ser modificado usando un procesador de texto por consola como nano o usando el comando `notepad ./liquidador_nomina/securitydb.py `
 En este archivo debe ingresar los datos de conexión a su base de datos, recuerde que el parametro de PGPORT siempre debe ser 5432 **EN CASO DE NO FUNCIONARLE** podra poner estos parametros de conexión abriendo el archivo en un editor de código, y colocando los datos dentro de securitydb.py.
 
-5) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/test/DatabaseTest.py`
+4) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/test/DatabaseTest.py`
 
-6) Si deseas devolverte usa `cd..`
+5) Si deseas devolverte usa `cd ..`
 
 
 # Como ejecutar la interfaz por consola
 
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Ahora copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
+2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
-3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
+3) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/src/view/Console.py`
 
-4) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/src/view/Console.py`
-
-5) Si deseas devolverte usa `cd..`
+4) Si deseas devolverte usa `cd ..`
 
 
 # Como ejecutar la interfaz gráfica
 
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Ahora copia en la consola de bash `git clone https://github.com/hurluis/liquidador_nomina.git`
+2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
-3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
+3) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/src/view/Interfaz.py`
 
-4) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/src/view/Interfaz.py`
-
-5) Si deseas devolverte usa `cd..`
+4) Si deseas devolverte usa `cd ..`
 
 
 # Como ejecutar la interfaz por consola de la base de datos
 
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Ahora copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
+2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
-3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
-
-4) Para poder ejecutar las pruebas se debe modificar el archivo `securitydb.py que se encuentra en ./liquidador_nomina/securitydb.py ` Este archivo debe
+3) Para poder ejecutar la interfaz de la data base se debe modificar el archivo `securitydb.py que se encuentra en ./liquidador_nomina/securitydb.py ` Este archivo debe
 ser modificado usando un procesador de texto por consola como nano o usando el comando `notepad ./liquidador_nomina/securitydb.py `
 En este archivo debe ingresar los datos de conexión a su base de datos, recuerde que el parametro de PGPORT siempre debe ser 5432 **EN CASO DE NO FUNCIONARLE** podra poner estos parametros de conexión abriendo el archivo en un editor de código, y colocando los datos dentro de securitydb.py.
 
-5) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/src/view/consoledb.py`
+4) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/src/view/consoledb.py`
 
-6) Si deseas devolverte usa `cd..`
+5) Si deseas devolverte usa `cd ..`
 
 
 # Como ejecutar la interfaz web
 
 1) Dirijase a la pantalla de escritorio y en ese lugar cree una carpeta con el nombre: <Calculadora_de_nomina>
 
-2) Ahora copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
+2) Ahora dentro de la carpeta abre la terminal preferiblemente bash y copia  `git clone https://github.com/hurluis/liquidador_nomina.git`
 
-3) Ahora en la terminal copia  `cd Calculadora_de_nomina`
+3) Para poder ejecutar la interfaz web se debe modificar el archivo `securitydb.py` que se encuentra en `./liquidador_nomina/securitydb.py ` Este archivo debe
+ser modificado usando un procesador de texto por consola como nano o usando el comando `notepad ./liquidador_nomina/securitydb.py `
+En este archivo debe ingresar los datos de conexión a su base de datos, recuerde que el parametro de PGPORT siempre debe ser 5432 **EN CASO DE NO FUNCIONARLE** podra poner estos parametros de conexión abriendo el archivo en un editor de código, y colocando los datos dentro de securitydb.py.
 
 4) ahora copia el siguiente codigo en la terminal `python ./liquidador_nomina/app.py`
 
 5) copie el link http que le arroja y ahora solo a disfrutar :D
 
-6) Si deseas devolverte usa `cd..`
+6) Si deseas devolverte usa `cd ..`
 
 
 
